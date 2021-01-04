@@ -11,10 +11,14 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Theme.of(context).secondaryHeaderColor,
       elevation: kNavBarElevation,
+      brightness: Theme.of(context).brightness,
       leading: IconButton(
         icon: SvgPicture.asset(
           "assets/icons/settings.svg",
           height: kNavBarIconHeight,
+          color: Theme.of(context).brightness == Brightness.light
+              ? Colors.black
+              : Colors.white,
         ),
         splashRadius: kNavBarIconSplashRadius,
         onPressed: () {
@@ -26,6 +30,9 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
           icon: SvgPicture.asset(
             "assets/icons/search.svg",
             height: kNavBarIconHeight,
+            color: Theme.of(context).brightness == Brightness.light
+                ? Colors.black
+                : Colors.white,
           ),
           splashRadius: kNavBarIconSplashRadius,
           onPressed: () {

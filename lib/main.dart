@@ -1,8 +1,15 @@
 import 'package:bttvstickers/themes/light_theme.dart';
+import 'package:bttvstickers/themes/dark_theme.dart';
 import 'package:bttvstickers/widgets/NavBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
   runApp(App());
 }
 
@@ -13,6 +20,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'BTTV Stickers',
       theme: buildLightTheme(),
+      darkTheme: buildDarkTheme(),
       home: Scaffold(
         appBar: NavBar(),
         body: Center(
