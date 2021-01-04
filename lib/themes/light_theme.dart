@@ -5,5 +5,7 @@ ThemeData buildLightTheme() {
     textTheme: ThemeData.light().textTheme.apply(
           fontFamily: 'Inter',
         ),
+    scaffoldBackgroundColor: Colors.white,
+    secondaryHeaderColor: Color(0xffefeff1),
   );
 }
