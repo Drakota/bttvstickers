@@ -1,47 +1,36 @@
-import 'package:flutter/material.dart';
 import 'package:bttvstickers/constants.dart';
-import 'package:bttvstickers/screens/search_screen.dart';
-import 'package:bttvstickers/screens/settings_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget implements PreferredSizeWidget {
+  final bool small;
+  final Widget title;
+  final Widget leading;
+  final bool centerTitle;
+  final List<Widget> actions;
+
+  NavBar({
+    this.small = false,
+    this.centerTitle = false,
+    this.title,
+    this.leading,
+    this.actions,
+  });
+
   @override
-  Size get preferredSize => const Size.fromHeight(kNavBarHeight);
+  Size get preferredSize =>
+      Size.fromHeight(!small ? kNavBarHeight : kSmallNavBarHeight);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).secondaryHeaderColor,
-      elevation: kNavBarElevation,
+      backgroundColor:
+          !small ? Theme.of(context).secondaryHeaderColor : Colors.transparent,
+      elevation: !small ? kNavBarElevation : 0.0,
       brightness: Theme.of(context).brightness,
-      leading: IconButton(
-        icon: SvgPicture.asset(
-          "assets/icons/settings.svg",
-          height: kNavBarIconHeight,
-          color: Theme.of(context).brightness == Brightness.light
-              ? Colors.black
-              : Colors.white,
-        ),
-        splashRadius: kNavBarIconSplashRadius,
-        onPressed: () {
-          Navigator.pushNamed(context, SettingsScreen.routeName);
-        },
-      ),
-      actions: [
-        IconButton(
-          icon: SvgPicture.asset(
-            "assets/icons/search.svg",
-            height: kNavBarIconHeight,
-            color: Theme.of(context).brightness == Brightness.light
-                ? Colors.black
-                : Colors.white,
-          ),
-          splashRadius: kNavBarIconSplashRadius,
-          onPressed: () {
-            Navigator.pushNamed(context, SearchScreen.routeName);
-          },
-        )
-      ],
+      centerTitle: this.centerTitle,
+      title: this.title,
+      leading: this.leading,
+      actions: this.actions,
     );
   }
 }

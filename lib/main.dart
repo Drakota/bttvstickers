@@ -2,6 +2,7 @@ import 'package:bttvstickers/routes.dart';
 import 'package:bttvstickers/screens/home_screen.dart';
 import 'package:bttvstickers/themes/dark_theme.dart';
 import 'package:bttvstickers/themes/light_theme.dart';
+import 'package:bttvstickers/utils/create_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -22,8 +23,10 @@ class App extends StatelessWidget {
       title: 'BTTV Stickers',
       theme: buildLightTheme(),
       darkTheme: buildDarkTheme(),
-      routes: routes,
       initialRoute: HomeScreen.routeName,
+      onGenerateRoute: (settings) {
+        return createRoute(routes[settings.name]);
+      },
     );
   }
 }
