@@ -1,5 +1,7 @@
-import 'package:bttvstickers/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:bttvstickers/constants.dart';
+import 'package:bttvstickers/screens/search_screen.dart';
+import 'package:bttvstickers/screens/settings_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class NavBar extends StatelessWidget implements PreferredSizeWidget {
@@ -22,7 +24,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         splashRadius: kNavBarIconSplashRadius,
         onPressed: () {
-          // TODO
+          Navigator.pushNamed(context, SettingsScreen.routeName);
         },
       ),
       actions: [
@@ -36,7 +38,7 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           splashRadius: kNavBarIconSplashRadius,
           onPressed: () {
-            // TODO
+            Navigator.pushNamed(context, SearchScreen.routeName);
           },
         )
       ],
