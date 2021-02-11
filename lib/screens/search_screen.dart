@@ -1,6 +1,6 @@
 import 'package:bttvstickers/widgets/clearable_textfield.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
-import 'package:bttvstickers/widgets/navicon.dart';
+import 'package:bttvstickers/widgets/svgbuttonicon.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -17,7 +17,7 @@ class SearchScreen extends StatelessWidget {
           autofocus: true,
           hintText: "Search...",
         ),
-        leading: NavIcon(
+        leading: SvgButtonIcon(
           assetName: "assets/icons/chevron-left.svg",
           onPressed: () {
             Navigator.pop(context);

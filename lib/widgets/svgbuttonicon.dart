@@ -2,11 +2,11 @@ import 'package:bttvstickers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class NavIcon extends StatelessWidget {
+class SvgButtonIcon extends StatelessWidget {
   final String assetName;
   final void Function() onPressed;
 
-  NavIcon({this.assetName, this.onPressed});
+  SvgButtonIcon({this.assetName, this.onPressed});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
 import 'package:bttvstickers/constants.dart';
-import 'package:bttvstickers/widgets/navicon.dart';
+import 'package:bttvstickers/widgets/svgbuttonicon.dart';
 import 'package:flutter/material.dart';
 
 class ClearableTextField extends StatefulWidget {
@@ -54,7 +54,7 @@ class _ClearableTextFieldState extends State<ClearableTextField> {
       return null;
     }
 
-    return NavIcon(
+    return SvgButtonIcon(
       assetName: "assets/icons/x-circle-fill.svg",
       onPressed: () => widget.controller.clear(),
     );

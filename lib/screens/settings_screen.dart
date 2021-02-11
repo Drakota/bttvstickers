@@ -1,6 +1,6 @@
 import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
-import 'package:bttvstickers/widgets/navicon.dart';
+import 'package:bttvstickers/widgets/svgbuttonicon.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -20,7 +20,7 @@ class SettingsScreen extends StatelessWidget {
               fontWeight: FontWeight.w900,
             ),
           ),
-          leading: NavIcon(
+          leading: SvgButtonIcon(
             assetName: "assets/icons/x.svg",
             onPressed: () {
               Navigator.pop(context);

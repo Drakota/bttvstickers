@@ -1,3 +1,6 @@
+// API constants
+const kTopSharedEmotesUrl = "https://api.betterttv.net/3/emotes/shared/top";
+
 // NavBar constants
 const kNavBarHeight = 60.0;
 const kSmallNavBarHeight = 40.0;
