@@ -16,9 +16,7 @@ class SettingsScreen extends StatelessWidget {
           centerTitle: true,
           title: Text(
             "Settings",
-            style: TextStyle(
-              fontWeight: FontWeight.w900,
-            ),
+            style: Theme.of(context).textTheme.headline5,
           ),
           leading: SvgButtonIcon(
             assetName: "assets/icons/x.svg",

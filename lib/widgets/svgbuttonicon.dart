@@ -15,9 +15,7 @@ class SvgButtonIcon extends StatelessWidget {
       icon: SvgPicture.asset(
         this.assetName,
         height: kNavBarIconHeight,
-        color: Theme.of(context).brightness == Brightness.light
-            ? Colors.black
-            : Colors.white,
+        color: Theme.of(context).buttonColor,
       ),
       splashRadius: kNavBarIconSplashRadius,
       onPressed: this.onPressed,
