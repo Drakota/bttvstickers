@@ -3,11 +3,17 @@ const kDefaultPadding = 10.0;
 const kDefaultBorderRadius = 10.0;
 
 // API constants
-const kTopSharedEmotesUrl = "https://api.betterttv.net/3/emotes/shared/top";
+const kTopEmotesUrl = "https://api.betterttv.net/3/emotes/shared/top";
+const kTrendingEmotesUrl = "https://api.betterttv.net/3/emotes/shared/trending";
+const kSharedEmotesUrl = "https://api.betterttv.net/3/emotes/shared";
+const kGlobalEmotesUrl = "https://api.betterttv.net/3/cached/emotes/global";
 const kEmoteCdnUrl = "https://cdn.betterttv.net/emote";
 
 // InfiniteScrollView constants
 const kItemLimit = 50;
+
+// HomeScreen constants
+const kDefaultCategory = "top";
 
 // NavBar constants
 const kNavBarHeight = 60.0;

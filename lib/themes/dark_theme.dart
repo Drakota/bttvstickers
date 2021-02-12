@@ -9,6 +9,10 @@ ThemeData buildDarkTheme() {
             fontSize: 12.0,
             fontWeight: FontWeight.w600,
           ),
+          headline5: TextStyle(
+            fontSize: 22.0,
+            fontWeight: FontWeight.w900,
+          ),
         )
         .apply(
           fontFamily: 'Inter',

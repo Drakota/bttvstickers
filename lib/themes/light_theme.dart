@@ -10,6 +10,11 @@ ThemeData buildLightTheme() {
             fontWeight: FontWeight.w600,
             color: Colors.black,
           ),
+          headline5: TextStyle(
+            fontSize: 22.0,
+            fontWeight: FontWeight.w900,
+            color: Colors.black,
+          ),
         )
         .apply(
           fontFamily: 'Inter',
