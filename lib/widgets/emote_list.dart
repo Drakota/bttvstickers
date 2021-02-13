@@ -7,11 +7,10 @@ import 'package:bttvstickers/widgets/emote_tile.dart';
 import 'package:flutter/material.dart';
 
 class EmoteList extends StatefulWidget {
-  Category category;
+  final Category category;
 
-  EmoteList({String category}) {
-    this.category = enumFromString(Category.values, category);
-  }
+  EmoteList({String category})
+      : category = enumFromString(Category.values, category);
 
   @override
   _EmoteListState createState() => _EmoteListState();
@@ -22,37 +21,56 @@ class _EmoteListState extends State<EmoteList> {
   List<Emote> _emotes = List();
   ScrollController _scrollController = ScrollController();
   int _offset = 0;
+  bool _hasMoreData = true;
 
-  void getEmotes() {
-    if (widget.category == Category.shared) {
-      _futureEmotes = fetchEmotes(
-        category: widget.category,
-        before: _emotes.length > 0 ? _emotes.last.id : null,
-      );
-      return;
-    }
-    _futureEmotes = fetchEmotes(
+  Future<List<Emote>> getEmotes() async {
+    var before = (widget.category == Category.shared && _emotes.isNotEmpty)
+        ? _emotes.last.id
+        : null;
+    var result = await fetchEmotes(
       category: widget.category,
       offset: _offset,
+      // The API for shared needs to know the last id of our
+      // list of emotes to paginate
+      before: before,
     );
+
+    if (widget.category == Category.global && _emotes.length > 0) {
+      // The API for global always return the same data even if we have
+      // an offset (no empty array), so if the category is global and we
+      // already fetched something just return an empty array
+      result = [];
+    }
+    setState(() {
+      // Even when passing a limit the API return different result length
+      // So we move the offset by the length of what we receive
+      // to prevent from skipping some emotes
+      _emotes += result;
+      _offset += result.length + 1;
+      _hasMoreData = result.length > 0;
+    });
+    return _emotes;
+  }
+
+  void _scrollListener() {
+    // If we are at the bottom of the scroller fetch more emotes
+    if (_scrollController.position.atEdge &&
+        _scrollController.position.pixels != 0) {
+      _futureEmotes = getEmotes();
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    getEmotes();
-    _scrollController.addListener(() {
-      // If we are at the bottom of the scroller fetch more emotes
-      if (_scrollController.position.atEdge &&
-          _scrollController.position.pixels != 0) {
-        if (_emotes.length > 0 && widget.category == Category.global) {
-          return;
-        }
-        setState(() {
-          getEmotes();
-        });
-      }
-    });
+    _futureEmotes = getEmotes();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    super.dispose();
   }
 
   @override
@@ -61,7 +79,7 @@ class _EmoteListState extends State<EmoteList> {
     if (widget.category != oldWidget.category) {
       _offset = 0;
       _emotes.clear();
-      getEmotes();
+      _futureEmotes = getEmotes();
     }
   }
 
@@ -70,15 +88,9 @@ class _EmoteListState extends State<EmoteList> {
     return FutureBuilder<List<Emote>>(
       future: _futureEmotes,
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasData) {
-            _emotes += snapshot.data;
-            _offset += kItemLimit;
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
+        if (snapshot.hasError) {
+          return Text("${snapshot.error}");
         }
-
         return _createScrollView();
       },
     );
@@ -98,7 +110,7 @@ class _EmoteListState extends State<EmoteList> {
             children: _emotes.map((emote) => EmoteTile(emote: emote)).toList(),
           ),
         ),
-        if (widget.category != Category.global)
+        if (_hasMoreData)
           SliverPadding(
             padding: EdgeInsets.all(kDefaultPadding),
             sliver: SliverToBoxAdapter(
