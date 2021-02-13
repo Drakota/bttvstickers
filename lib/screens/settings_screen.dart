@@ -1,6 +1,8 @@
 import 'package:bttvstickers/constants.dart';
+import 'package:bttvstickers/widgets/options_card.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
 import 'package:bttvstickers/widgets/svgbuttonicon.dart';
+import 'package:bttvstickers/widgets/versioning_card.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -27,8 +29,35 @@ class SettingsScreen extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Column(
-          children: <Widget>[],
+        child: Padding(
+          padding: EdgeInsets.all(kDefaultPadding),
+          child: Column(
+            children: <Widget>[
+              OptionsCard(
+                fieldName: "Theme",
+                options: [
+                  Option(
+                    assetName: "assets/icons/sun.svg",
+                    value: "light",
+                    displayName: "Light",
+                  ),
+                  Option(
+                    assetName: "assets/icons/moon.svg",
+                    value: "dark",
+                    displayName: "Dark",
+                  ),
+                  Option(
+                    assetName: "assets/icons/light-bulb.svg",
+                    value: "automatic",
+                    displayName: "Automatic",
+                  ),
+                ],
+                // onChange: (selectedOption) => print(selectedOption.value),
+              ),
+              Spacer(),
+              VersioningCard(),
+            ],
+          ),
         ),
       ),
     );

@@ -25,6 +25,9 @@ const kNavBarIconSplashRadius = kNavBarIconHeight;
 // TextField constants
 const kTextFieldFontSize = 18.0;
 
+// OptionsCard constants
+const kIconFieldFlexSpacing = 2;
+
 // EmoteList constants
 const kEmoteListSpacing = 8.0;
 const kEmoteListVerticalItemCount = 4;
