@@ -6,9 +6,15 @@ class Card extends StatelessWidget {
   final void Function() onTap;
   final Color color;
   final Border border;
+  final bool addPadding;
 
-  Card({this.child, this.color, this.border, Function() onTap})
-      : onTap = onTap ?? (() => {});
+  Card({
+    this.child,
+    this.color,
+    this.border,
+    this.addPadding = true,
+    Function() onTap,
+  }) : onTap = onTap ?? (() => {});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +30,12 @@ class Card extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(kDefaultBorderRadius)),
           child: Container(
             width: double.infinity,
-            child: Padding(
-              padding: EdgeInsets.all(kDefaultPadding + 10.0),
-              child: child,
-            ),
+            child: this.addPadding
+                ? Padding(
+                    padding: EdgeInsets.all(kDefaultPadding + 10.0),
+                    child: child,
+                  )
+                : child,
           ),
           onTap: onTap,
         ),
