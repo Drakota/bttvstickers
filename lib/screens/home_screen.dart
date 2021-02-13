@@ -29,11 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
             assetName: "assets/icons/chevron-down.svg",
           ),
           items: Category.values.map((Category category) {
-            var value = foundation.describeEnum(category);
             return new DropdownMenuItem<String>(
-              value: value,
+              value: category.toString(),
               child: new Text(
-                value,
+                foundation.describeEnum(category),
                 style: Theme.of(context).textTheme.headline5,
               ),
             );

@@ -1,10 +1,14 @@
+import 'package:bttvstickers/constants.dart';
+import 'package:bttvstickers/models/settings.dart';
 import 'package:bttvstickers/routes.dart';
 import 'package:bttvstickers/screens/home_screen.dart';
+import 'package:bttvstickers/services/get_settings.dart';
 import 'package:bttvstickers/themes/dark_theme.dart';
 import 'package:bttvstickers/themes/light_theme.dart';
 import 'package:bttvstickers/utils/create_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -12,15 +16,24 @@ void main() {
       statusBarColor: Colors.transparent,
     ),
   );
-  runApp(App());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => Settings()),
+      ],
+      child: App(),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final settings = Provider.of<Settings>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'BTTV Stickers',
+      title: kAppTitle,
+      themeMode: settings.theme,
       theme: buildLightTheme(),
       darkTheme: buildDarkTheme(),
       initialRoute: HomeScreen.routeName,

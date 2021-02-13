@@ -1,4 +1,8 @@
+import 'package:bttvstickers/models/category.dart';
+import 'package:flutter/material.dart';
+
 // General constants
+const kAppTitle = "BTTV Stickers";
 const kDefaultPadding = 10.0;
 const kDefaultBorderRadius = 10.0;
 
@@ -13,7 +17,13 @@ const kEmoteCdnUrl = "https://cdn.betterttv.net/emote";
 const kItemLimit = 50;
 
 // HomeScreen constants
-const kDefaultCategory = "top";
+const kDefaultCategory = "Category.top";
+
+// Data persistance constants
+const kSettingsFileName = "settings";
+
+// Settings constants
+const kDefaultTheme = ThemeMode.system;
 
 // NavBar constants
 const kNavBarHeight = 60.0;

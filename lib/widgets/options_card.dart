@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class Option {
   final String assetName;
-  final String value;
+  final dynamic value;
   final String displayName;
 
   Option({
@@ -18,14 +18,14 @@ class Option {
 class OptionsCard extends StatefulWidget {
   final String fieldName;
   final List<Option> options;
-  final int defaultIndex;
+  final dynamic defaultValue;
   final void Function(Option selectedOption) onChange;
 
   OptionsCard({
     this.fieldName,
     this.options,
+    this.defaultValue,
     this.onChange,
-    this.defaultIndex = 0,
   });
 
   @override
@@ -38,7 +38,18 @@ class _OptionsCardState extends State<OptionsCard> {
   @override
   void initState() {
     super.initState();
-    _currentIndex = widget.defaultIndex;
+    if (widget.defaultValue != null) {
+      _currentIndex = _findOptionIndex(widget.defaultValue);
+    } else {
+      _currentIndex = 0;
+    }
+  }
+
+  int _findOptionIndex(dynamic value) {
+    var index = widget.options.indexWhere((option) => option.value == value);
+
+    // If we don't find the option, return the first option
+    return index >= 0 ? index : 0;
   }
 
   void _handleOnTap() {
