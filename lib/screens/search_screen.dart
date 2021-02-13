@@ -1,3 +1,4 @@
+import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/widgets/clearable_textfield.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
 import 'package:bttvstickers/widgets/svgbuttonicon.dart';
@@ -24,9 +25,9 @@ class SearchScreen extends StatelessWidget {
           },
         ),
       ),
-      body: Center(
+      body: Padding(
+        padding: EdgeInsets.all(kDefaultPadding),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
               'Search',

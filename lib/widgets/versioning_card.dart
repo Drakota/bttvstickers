@@ -30,14 +30,14 @@ class _VersioningCardState extends State<VersioningCard> {
               children: [
                 Text(
                   "BTTVStickers v${_packageInfo.version}",
-                  style: TextStyle(fontWeight: FontWeight.w900),
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 SizedBox(
                   height: kEmoteListSpacing,
                 ),
                 Text(
                   "Made with 🧡 using Flutter",
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
               ],
             ),

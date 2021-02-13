@@ -9,13 +9,17 @@ ThemeData buildDarkTheme() {
             fontSize: 12.0,
             fontWeight: FontWeight.w600,
           ),
+          subtitle2: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w300,
+          ),
           headline5: TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.w900,
           ),
           headline6: TextStyle(
             fontSize: 16.0,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
           ),
         )
         .apply(

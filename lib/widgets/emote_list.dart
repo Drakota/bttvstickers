@@ -4,6 +4,7 @@ import 'package:bttvstickers/models/emote.dart';
 import 'package:bttvstickers/services/fetch_emotes.dart';
 import 'package:bttvstickers/utils/enum_from_string.dart';
 import 'package:bttvstickers/widgets/emote_tile.dart';
+import 'package:bttvstickers/widgets/error_card.dart';
 import 'package:flutter/material.dart';
 
 class EmoteList extends StatefulWidget {
@@ -89,7 +90,12 @@ class _EmoteListState extends State<EmoteList> {
       future: _futureEmotes,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text("${snapshot.error}");
+          return Padding(
+            padding: EdgeInsets.all(kDefaultPadding),
+            child: ErrorCard(
+              error: snapshot.error.toString(),
+            ),
+          );
         }
         return _createScrollView();
       },

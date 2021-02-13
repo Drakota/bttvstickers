@@ -10,6 +10,11 @@ ThemeData buildLightTheme() {
             fontWeight: FontWeight.w600,
             color: Colors.black,
           ),
+          subtitle2: TextStyle(
+            fontSize: 16.0,
+            fontWeight: FontWeight.w300,
+            color: Colors.black,
+          ),
           headline5: TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.w900,
@@ -17,7 +22,7 @@ ThemeData buildLightTheme() {
           ),
           headline6: TextStyle(
             fontSize: 16.0,
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w600,
             color: Colors.black,
           ),
         )

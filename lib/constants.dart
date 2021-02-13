@@ -35,6 +35,11 @@ const kNavBarIconSplashRadius = kNavBarIconHeight;
 // TextField constants
 const kTextFieldFontSize = 18.0;
 
+// ErrorCard constants
+const kErrorCardBorderSize = 2.0;
+const kErrorCardImageWidth = 200.0;
+const kErrorCardTextSpacing = 10.0;
+
 // OptionsCard constants
 const kIconFieldFlexSpacing = 2;
 

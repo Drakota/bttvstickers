@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 class Card extends StatelessWidget {
   final Widget child;
   final void Function() onTap;
+  final Color color;
+  final Border border;
 
-  Card({this.child, Function() onTap}) : onTap = onTap ?? (() => {});
+  Card({this.child, this.color, this.border, Function() onTap})
+      : onTap = onTap ?? (() => {});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,8 @@ class Card extends StatelessWidget {
       child: Ink(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(kDefaultBorderRadius)),
-          color: Theme.of(context).secondaryHeaderColor,
+          border: this.border,
+          color: color ?? Theme.of(context).secondaryHeaderColor,
         ),
         child: InkWell(
           borderRadius: BorderRadius.all(Radius.circular(kDefaultBorderRadius)),

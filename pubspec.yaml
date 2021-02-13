@@ -113,6 +113,9 @@ flutter:
         - asset: assets/fonts/Inter-BlackItalic.ttf
           weight: 900
           style: italic
+    - family: CascadiaMono
+      fonts:
+        - asset: assets/fonts/CascadiaMono.ttf
         
 
   # For details regarding fonts from package dependencies,
