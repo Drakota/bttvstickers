@@ -29,7 +29,7 @@ class _VersioningCardState extends State<VersioningCard> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "BTTVStickers v${_packageInfo.version}",
+                  "$kAppTitle v${_packageInfo.version}",
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 SizedBox(
