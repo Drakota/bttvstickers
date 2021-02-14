@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 Future<List<Emote>> fetchEmotes({
   Category category,
+  String query,
   String before,
   int offset,
   int limit = kItemLimit,
@@ -15,8 +16,11 @@ Future<List<Emote>> fetchEmotes({
   if (offset != null) {
     args["offset"] = offset.toString();
   }
-  if (before != null) {
+  if (before != null && query == null) {
     args["before"] = before;
+  }
+  if (query != null) {
+    args["query"] = query;
   }
   args["limit"] = limit.toString();
 
@@ -30,7 +34,11 @@ Future<List<Emote>> fetchEmotes({
       url = kTrendingEmotesUrl;
       break;
     case Category.shared:
-      url = kSharedEmotesUrl;
+      if (query == null) {
+        url = kSharedEmotesUrl;
+      } else {
+        url = kSharedSearchEmotesUrl;
+      }
       break;
     case Category.global:
       url = kGlobalEmotesUrl;
@@ -44,6 +52,8 @@ Future<List<Emote>> fetchEmotes({
     // key emote is null we just take the whole object
     return result.map((item) => Emote.fromJson(item['emote'] ?? item)).toList();
   } else {
-    throw Exception('Failed to load emotes...');
+    throw Exception(
+      'Failed to while fetching emotes...\nError: ${response.body}',
+    );
   }
 }
