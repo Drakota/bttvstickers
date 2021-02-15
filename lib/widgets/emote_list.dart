@@ -128,11 +128,17 @@ class _EmoteListState extends State<EmoteList> {
       slivers: [
         SliverPadding(
           padding: EdgeInsets.all(kDefaultPadding),
-          sliver: SliverGrid.count(
-            crossAxisCount: kEmoteListVerticalItemCount,
-            crossAxisSpacing: kEmoteListSpacing,
-            mainAxisSpacing: kEmoteListSpacing,
-            children: _emotes.map((emote) => EmoteTile(emote: emote)).toList(),
+          sliver: SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: kEmoteListVerticalItemCount,
+              crossAxisSpacing: kEmoteListSpacing,
+              mainAxisSpacing: kEmoteListSpacing,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) =>
+                  EmoteTile(emote: _emotes[index]),
+              childCount: _emotes.length,
+            ),
           ),
         ),
         if (_loading)
