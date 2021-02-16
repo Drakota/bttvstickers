@@ -7,6 +7,8 @@ class PackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pack = Provider.of<Pack>(context);
+    final sum = pack.added.length + pack.selected.length;
+
     return AnimatedOpacity(
       opacity: pack.selected.length > 0 ? 1.0 : 0.0,
       duration: kPackButtonFadeOutTime,
@@ -15,10 +17,15 @@ class PackButton extends StatelessWidget {
           // bottom for a split second when changing routes, this unfortunately
           // breaks the fadeOut animation
           ? FloatingActionButton.extended(
-              onPressed: () => pack.addToPack(),
-              icon: Icon(Icons.save),
+              onPressed: () => pack.seal(),
+              backgroundColor: Theme.of(context).accentColor,
+              icon: Icon(
+                Icons.save,
+                color: Theme.of(context).buttonColor,
+              ),
               label: Text(
-                "${pack.added.length + pack.selected.length} stickers selected in the pack",
+                "$sum sticker${sum > 1 ? "s" : ""} selected in the pack",
+                style: Theme.of(context).textTheme.headline6,
               ),
             )
           : Container(),

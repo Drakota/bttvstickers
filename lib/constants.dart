@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 const kAppTitle = "BTTV Stickers";
 const kDefaultPadding = 10.0;
 const kDefaultBorderRadius = 10.0;
+const kDefaultSnackBarLifetime = const Duration(milliseconds: 500);
 
 // API constants
 const kEmotesApiBaseUrl = "https://api.betterttv.net/3";

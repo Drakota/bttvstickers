@@ -29,9 +29,16 @@ class Pack extends ChangeNotifier implements JsonSerializable {
     notifyListeners();
   }
 
-  addToPack() {
+  seal() {
     _added += _selected;
     _selected.clear();
+    saveModelToJsonFile(this, _fileName);
+    notifyListeners();
+  }
+
+  clear() {
+    _selected.clear();
+    _added.clear();
     saveModelToJsonFile(this, _fileName);
     notifyListeners();
   }

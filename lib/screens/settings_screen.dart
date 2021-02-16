@@ -1,5 +1,6 @@
 import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/models/settings.dart';
+import 'package:bttvstickers/widgets/clear_pack_card.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
 import 'package:bttvstickers/widgets/options_card.dart';
 import 'package:bttvstickers/widgets/svgbuttonicon.dart';
@@ -61,6 +62,10 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
               Spacer(),
+              ClearPackCard(),
+              Container(
+                height: kErrorCardTextSpacing,
+              ),
               VersioningCard(),
             ],
           ),
