@@ -1,11 +1,13 @@
 import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/models/category.dart';
 import 'package:bttvstickers/models/emote.dart';
+import 'package:bttvstickers/models/pack.dart';
 import 'package:bttvstickers/services/fetch_emotes.dart';
 import 'package:bttvstickers/utils/enum_from_string.dart';
 import 'package:bttvstickers/widgets/emote_tile.dart';
 import 'package:bttvstickers/widgets/error_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class EmoteList extends StatefulWidget {
   final Category category;
@@ -105,6 +107,8 @@ class _EmoteListState extends State<EmoteList> {
 
   @override
   Widget build(BuildContext context) {
+    final pack = Provider.of<Pack>(context);
+
     return FutureBuilder<List<Emote>>(
       future: _futureEmotes,
       builder: (context, snapshot) {
@@ -116,41 +120,40 @@ class _EmoteListState extends State<EmoteList> {
             ),
           );
         }
-        return _createScrollView();
-      },
-    );
-  }
-
-  Widget _createScrollView() {
-    return CustomScrollView(
-      controller: _scrollController,
-      physics: BouncingScrollPhysics(),
-      slivers: [
-        SliverPadding(
-          padding: EdgeInsets.all(kDefaultPadding),
-          sliver: SliverGrid(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: kEmoteListVerticalItemCount,
-              crossAxisSpacing: kEmoteListSpacing,
-              mainAxisSpacing: kEmoteListSpacing,
-            ),
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) =>
-                  EmoteTile(emote: _emotes[index]),
-              childCount: _emotes.length,
-            ),
-          ),
-        ),
-        if (_loading)
-          SliverPadding(
-            padding: EdgeInsets.all(kDefaultPadding),
-            sliver: SliverToBoxAdapter(
-              child: Center(
-                child: CircularProgressIndicator(),
+        return CustomScrollView(
+          controller: _scrollController,
+          physics: BouncingScrollPhysics(),
+          slivers: [
+            SliverPadding(
+              padding: EdgeInsets.all(kDefaultPadding),
+              sliver: SliverGrid(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: kEmoteListVerticalItemCount,
+                  crossAxisSpacing: kEmoteListSpacing,
+                  mainAxisSpacing: kEmoteListSpacing,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) => EmoteTile(
+                    emote: _emotes[index],
+                    selected: pack.selected.contains(_emotes[index].id),
+                    added: pack.added.contains(_emotes[index].id),
+                  ),
+                  childCount: _emotes.length,
+                ),
               ),
             ),
-          )
-      ],
+            if (_loading)
+              SliverPadding(
+                padding: EdgeInsets.all(kDefaultPadding),
+                sliver: SliverToBoxAdapter(
+                  child: Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              )
+          ],
+        );
+      },
     );
   }
 }

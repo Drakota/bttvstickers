@@ -1,8 +1,8 @@
 import 'package:bttvstickers/constants.dart';
+import 'package:bttvstickers/models/pack.dart';
 import 'package:bttvstickers/models/settings.dart';
 import 'package:bttvstickers/routes.dart';
 import 'package:bttvstickers/screens/home_screen.dart';
-import 'package:bttvstickers/services/get_settings.dart';
 import 'package:bttvstickers/themes/dark_theme.dart';
 import 'package:bttvstickers/themes/light_theme.dart';
 import 'package:bttvstickers/utils/create_route.dart';
@@ -20,6 +20,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => Settings()),
+        ChangeNotifierProvider(create: (context) => Pack()),
       ],
       child: App(),
     ),

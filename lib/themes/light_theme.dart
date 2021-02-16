@@ -29,6 +29,7 @@ ThemeData buildLightTheme() {
         .apply(
           fontFamily: 'Inter',
         ),
+    hintColor: Color(0xffcbcbd0),
     scaffoldBackgroundColor: Colors.white,
     cardColor: Color(0xffe5e5e5),
     buttonColor: Color(0xff464649),

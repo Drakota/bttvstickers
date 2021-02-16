@@ -1,19 +1,21 @@
+import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/models/json_serializable.dart';
-import 'package:bttvstickers/services/get_settings.dart';
 import 'package:bttvstickers/utils/enum_from_string.dart';
+import 'package:bttvstickers/utils/file_helpers.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends ChangeNotifier implements JsonSerializable {
   ThemeMode _theme;
+  String _fileName = kSettingsFileName;
 
   Settings() {
-    fromJson(getSettings());
+    fromJson(getJsonFromFile(_fileName));
   }
 
   get theme => _theme;
   set theme(ThemeMode theme) {
     _theme = theme;
-    saveSettings(this);
+    saveModelToJsonFile(this, _fileName);
     notifyListeners();
   }
 

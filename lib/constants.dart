@@ -23,6 +23,7 @@ const kDefaultCategory = "Category.top";
 
 // Data persistance constants
 const kSettingsFileName = "settings";
+const kPackFileName = "pack";
 
 // Settings constants
 const kDefaultTheme = ThemeMode.system;
@@ -36,6 +37,9 @@ const kNavBarIconSplashRadius = kNavBarIconHeight;
 
 // TextField constants
 const kTextFieldFontSize = 18.0;
+
+// PackButton constants
+const kPackButtonFadeOutTime = const Duration(milliseconds: 250);
 
 // ErrorCard constants
 const kErrorCardBorderSize = 2.0;

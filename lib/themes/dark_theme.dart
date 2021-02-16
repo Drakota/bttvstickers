@@ -26,6 +26,7 @@ ThemeData buildDarkTheme() {
           fontFamily: 'Inter',
         ),
     accentColor: Color(0xff64ffda),
+    hintColor: Color(0xffadaaa5),
     scaffoldBackgroundColor: Color(0xff0e0e10),
     cardColor: Color(0xff464649),
     buttonColor: Color(0xffe5e5e5),

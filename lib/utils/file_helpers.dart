@@ -24,3 +24,14 @@ Future<File> getLocalFile(String fileName) async {
 Future<File> writeToFile(File file, JsonSerializable data) async {
   return file.writeAsString(jsonEncode(data));
 }
+
+Future<Map<String, dynamic>> getJsonFromFile(String fileName) async {
+  var file = await getLocalFile(fileName);
+  Map<String, dynamic> json = jsonDecode(await file.readAsString());
+  return json;
+}
+
+void saveModelToJsonFile(JsonSerializable model, String fileName) async {
+  var file = await getLocalFile(fileName);
+  await writeToFile(file, model);
+}

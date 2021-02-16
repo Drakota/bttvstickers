@@ -4,6 +4,7 @@ import 'package:bttvstickers/screens/search_screen.dart';
 import 'package:bttvstickers/screens/settings_screen.dart';
 import 'package:bttvstickers/widgets/emote_list.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
+import 'package:bttvstickers/widgets/pack_button.dart';
 import 'package:bttvstickers/widgets/svgbuttonicon.dart';
 import 'package:flutter/foundation.dart' as foundation;
 import 'package:flutter/material.dart';
@@ -21,6 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: PackButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: NavBar(
         title: DropdownButton<String>(
           value: category,
