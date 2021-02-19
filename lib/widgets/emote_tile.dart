@@ -4,6 +4,7 @@ import 'package:bttvstickers/models/pack.dart';
 import 'package:bttvstickers/widgets/card.dart' as own;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class EmoteTile extends StatelessWidget {
   final Emote emote;
@@ -35,8 +36,10 @@ class EmoteTile extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(
-                '$kEmoteCdnUrl/${emote.imagePath}',
+              FadeInImage.memoryNetwork(
+                fadeInDuration: kEmoteTileFadeInTime,
+                image: "$kEmoteCdnUrl/${emote.imagePath}",
+                placeholder: kTransparentImage,
                 height: kEmoteTileImageHeight,
               ),
               SizedBox(

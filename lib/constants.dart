@@ -55,5 +55,6 @@ const kEmoteListSpacing = 8.0;
 const kEmoteListVerticalItemCount = 4;
 
 // EmoteTile constants
+const kEmoteTileFadeInTime = const Duration(milliseconds: 350);
 const kEmoteTileImageHeight = 50.0;
 const kEmoteTileImageSubtitleSpacing = 5.0;
