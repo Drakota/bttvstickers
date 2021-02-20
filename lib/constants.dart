@@ -1,4 +1,3 @@
-import 'package:bttvstickers/models/category.dart';
 import 'package:flutter/material.dart';
 
 // General constants
@@ -6,6 +5,8 @@ const kAppTitle = "BTTV Stickers";
 const kDefaultPadding = 10.0;
 const kDefaultBorderRadius = 10.0;
 const kDefaultSnackBarLifetime = const Duration(milliseconds: 500);
+const kStickerIndexingChannel =
+    "com.drakota.bttvstickers/sticker_indexing_service";
 
 // API constants
 const kEmotesApiBaseUrl = "https://api.betterttv.net/3";

@@ -34,6 +34,8 @@ dependencies:
   package_info: ^0.4.3+4
   path_provider: ^1.6.27
   transparent_image: ^1.0.0
+  firebase_core: ^0.7.0
+  firebase_analytics: ^7.0.1
 
 dev_dependencies:
   flutter_test:
