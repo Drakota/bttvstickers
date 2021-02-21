@@ -5,6 +5,7 @@ const kAppTitle = "BTTV Stickers";
 const kDefaultPadding = 10.0;
 const kDefaultBorderRadius = 10.0;
 const kDefaultSnackBarLifetime = const Duration(milliseconds: 500);
+const kDefaultDebounceTime = const Duration(milliseconds: 250);
 const kStickerIndexingChannel =
     "com.drakota.bttvstickers/sticker_indexing_service";
 

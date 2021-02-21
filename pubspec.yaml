@@ -33,7 +33,7 @@ dependencies:
   flutter_svg: ^0.19.0
   package_info: ^0.4.3+4
   path_provider: ^1.6.27
-  transparent_image: ^1.0.0
+  cached_network_image: ^2.5.0
   firebase_core: ^0.7.0
   firebase_analytics: ^7.0.1
 

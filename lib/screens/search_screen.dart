@@ -15,27 +15,19 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final TextEditingController _textEditingController = TextEditingController();
   String _query = "";
 
   @override
   void initState() {
     super.initState();
-
-    _textEditingController.addListener(() {
-      if (_textEditingController.text.length >= 3 ||
-          _textEditingController.text == "") {
-        setState(() {
-          _query = _textEditingController.text;
-        });
-      }
-    });
   }
 
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
+  void onSearchChanged(String value) {
+    if (value.length >= 3 || value == "") {
+      setState(() {
+        _query = value;
+      });
+    }
   }
 
   @override
@@ -46,9 +38,10 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: NavBar(
         small: true,
         title: ClearableTextField(
-          controller: _textEditingController,
-          autofocus: true,
           hintText: "Search...",
+          onChanged: onSearchChanged,
+          debounceTime: kDefaultDebounceTime,
+          autofocus: true,
         ),
         leading: SvgButtonIcon(
           assetName: "assets/icons/chevron-left.svg",
