@@ -37,7 +37,7 @@ class EmoteTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CachedNetworkImage(
-                imageUrl: "$kEmoteCdnUrl/${emote.imagePath}",
+                imageUrl: emote.imageUrl,
                 height: kEmoteTileImageHeight,
               ),
               SizedBox(

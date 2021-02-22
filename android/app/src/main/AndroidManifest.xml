@@ -42,8 +42,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="bttvstickers" />
-                <data android:host="emote" />
+                <data android:scheme="bttvstickers" android:host="emote" />
             </intent-filter>
         </activity>
         <service
