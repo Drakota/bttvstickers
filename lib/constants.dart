@@ -49,12 +49,16 @@ const kErrorCardBorderSize = 2.0;
 const kErrorCardImageWidth = 200.0;
 const kErrorCardTextSpacing = 10.0;
 
+// NetworkCard constants
+const kNetworkCardImageWidth = 50.0;
+
 // OptionsCard constants
 const kIconFieldFlexSpacing = 2;
 
 // EmoteList constants
 const kEmoteListSpacing = 8.0;
 const kEmoteListVerticalItemCount = 4;
+const kEmoteListHorizontalItemCount = 8;
 
 // EmoteTile constants
 const kEmoteTileFadeInTime = const Duration(milliseconds: 350);
