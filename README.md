@@ -1,16 +1,45 @@
-# bttvstickers
+<p align="center" style="background: #0E0E10; border-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+    <img src="./assets/images/banner.png" />
+</p>
 
-A new Flutter project.
+<h4 align="center">
+Search and discover BTTV emotes to add to your Gboard stickers and use them anywhere
+</h4>
 
-## Getting Started
+## Features
+- Sort emotes by top, trending, shared or global
+- Search emotes by name
+- Collect multiple emotes into a Gboard sticker pack
+- Use the sticker pack to add the image of an emote anywhere that supports images (WhatsApp, Messenger, Telegram...)
 
-This project is a starting point for a Flutter application.
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+<div style="text-align: center">
+    <table>
+        <tr>
+            <td style="text-align: center">
+                <img src="./assets/images/sc1.png" width="250" />
+            </td>
+            <td style="text-align: center">
+                <img src="./assets/images/sc2.png" width="250" />
+            </td>
+            <td style="text-align: center">
+                <img src="./assets/images/sc3.png" width="250" />
+            </td>
+            <td style="text-align: center">
+                <img src="./assets/images/sc4.png" width="250" />
+            </td>
+        </tr>
+    </table>
+</div>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Planned features
+- Show the emotes currently added combined  
+- Create multiple packs
+- Being able to combine emotes to generate a single image with both emotes (EZ Clap)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
