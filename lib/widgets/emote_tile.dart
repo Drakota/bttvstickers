@@ -2,9 +2,9 @@ import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/models/emote.dart';
 import 'package:bttvstickers/models/pack.dart';
 import 'package:bttvstickers/widgets/card.dart' as own;
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class EmoteTile extends StatelessWidget {
   final Emote emote;
@@ -36,8 +36,10 @@ class EmoteTile extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CachedNetworkImage(
-                imageUrl: emote.imageUrl,
+              FadeInImage.memoryNetwork(
+                fadeInDuration: kEmoteTileFadeInTime,
+                image: emote.imageUrl,
+                placeholder: kTransparentImage,
                 height: kEmoteTileImageHeight,
               ),
               SizedBox(
