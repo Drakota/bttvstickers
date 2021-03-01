@@ -16,7 +16,7 @@ class MainActivity: FlutterActivity() {
             call, result ->
             if (call.method == "generatePack") {
                 val intent = Intent(baseContext, StickerIndexingService::class.java)
-                intent.putExtra("emotes", call.arguments as ArrayList<String>)
+                intent.putExtra("emotes", call.arguments as ArrayList<HashMap<String, String>>)
                 startService(intent)
             }
         }

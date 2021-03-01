@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Pack extends ChangeNotifier implements JsonSerializable {
-  List<String> _added = [];
-  List<String> _selected = [];
+  List<Emote> _added = [];
+  List<Emote> _selected = [];
   String _fileName = kPackFileName;
   MethodChannel _platform = const MethodChannel(kStickerIndexingChannel);
 
@@ -15,18 +15,18 @@ class Pack extends ChangeNotifier implements JsonSerializable {
     fromJson(getJsonFromFile(_fileName));
   }
 
-  List<String> get selected => _selected;
-  List<String> get added => _added;
+  List<Emote> get selected => _selected;
+  List<Emote> get added => _added;
 
   toggleSelection(Emote emote) {
-    if (_added.contains(emote.id)) {
-      _added.removeWhere((emoteId) => emoteId == emote.id);
+    if (isEmoteAdded(emote)) {
+      _added.removeWhere((e) => e.id == emote.id);
       _selected += _added;
       _added.clear();
-    } else if (!_selected.contains(emote.id)) {
-      _selected.add(emote.id);
+    } else if (!isEmoteSelected(emote)) {
+      _selected.add(emote);
     } else {
-      _selected.removeWhere((emoteId) => emoteId == emote.id);
+      _selected.removeWhere((e) => e.id == emote.id);
     }
     notifyListeners();
   }
@@ -36,8 +36,8 @@ class Pack extends ChangeNotifier implements JsonSerializable {
     _selected.clear();
     saveModelToJsonFile(this, _fileName);
     _platform.invokeMethod(
-      "generatePack",
-      _added,
+      'generatePack',
+      _added.map((e) => e.toJson()).toList(),
     );
     notifyListeners();
   }
@@ -46,19 +46,32 @@ class Pack extends ChangeNotifier implements JsonSerializable {
     _selected.clear();
     _added.clear();
     saveModelToJsonFile(this, _fileName);
-    _platform.invokeMethod("generatePack", []);
+    _platform.invokeMethod('generatePack', []);
     notifyListeners();
+  }
+
+  isEmoteAdded(Emote emote) {
+    var item = _added.firstWhere((e) => e.id == emote.id, orElse: () => null);
+    return item != null;
+  }
+
+  isEmoteSelected(Emote emote) {
+    var item =
+        _selected.firstWhere((e) => e.id == emote.id, orElse: () => null);
+    return item != null;
   }
 
   fromJson(Future<Map<String, dynamic>> futureJson) async {
     var json = await futureJson;
-    _added = (json['added'] ?? []).cast<String>();
+    _added = ((json['emotes'] ?? []) as List)
+        .map((item) => Emote.fromJson(item))
+        .toList();
     notifyListeners();
   }
 
   toJson() {
     return {
-      'added': _added,
+      'emotes': _added.map((e) => e.toJson()).toList(),
     };
   }
 }

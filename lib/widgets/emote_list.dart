@@ -148,8 +148,8 @@ class _EmoteListState extends State<EmoteList> {
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) => EmoteTile(
                       emote: _emotes[index],
-                      selected: pack.selected.contains(_emotes[index].id),
-                      added: pack.added.contains(_emotes[index].id),
+                      selected: pack.isEmoteSelected(_emotes[index]),
+                      added: pack.isEmoteAdded(_emotes[index]),
                     ),
                     childCount: _emotes.length,
                   ),

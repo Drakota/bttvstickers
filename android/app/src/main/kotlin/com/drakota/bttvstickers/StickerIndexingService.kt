@@ -16,13 +16,12 @@ class StickerIndexingService() : IntentService("StickerIndexingService") {
     private val STICKER_PACK_NAME = "BTTV Stickers"
     private val STICKER_PACK_URL = "bttvstickers://emote/pack/bttvstickers"
     private val STICKER_PACK_IMAGE = "android.resource://com.drakota.bttvstickers/" + R.mipmap.ic_launcher
-    private val STICKER_IMAGE_URL_PATTERN = "https://cdn.betterttv.net/emote/%s/3x"
     private val STICKER_URL_PATTERN = "bttvstickers://emote/%s"
 
     override fun onHandleIntent(intent: Intent?) {
         try {
             clearStickerPack()
-            val emotes = intent?.getStringArrayListExtra("emotes")!!
+            val emotes = intent?.getSerializableExtra("emotes")!! as ArrayList<HashMap<String, String>>
             if (emotes.isEmpty()) {
                 // If we are clearing the pack, just clear it and return
                 return
@@ -46,19 +45,19 @@ class StickerIndexingService() : IntentService("StickerIndexingService") {
         }
     }
 
-    private fun getIndexableStickers(emotes: ArrayList<String>): List<Indexable> {
+    private fun getIndexableStickers(emotes: ArrayList<HashMap<String, String>>): List<Indexable> {
         val stickerBuilders = getStickerBuilders(emotes)
         return stickerBuilders.map { it.build() }
     }
 
-    private fun getStickerBuilders(emotes: ArrayList<String>): List<StickerBuilder> {
+    private fun getStickerBuilders(emotes: ArrayList<HashMap<String, String>>): List<StickerBuilder> {
         val stickerBuilders = arrayListOf<StickerBuilder>()
 
-        for ((index, value) in emotes.withIndex()) {
+        for (emote in emotes) {
             val stickerBuilder = Indexables.stickerBuilder()
-                    .setName("$index")
-                    .setUrl(String.format(STICKER_URL_PATTERN, value))
-                    .setImage(String.format(STICKER_IMAGE_URL_PATTERN, value))
+                    .setName(emote["code"])
+                    .setUrl(String.format(STICKER_URL_PATTERN, emote["id"]))
+                    .setImage(emote["imageUrl"])
                     .setIsPartOf(Indexables.stickerPackBuilder()
                             .setName(STICKER_PACK_NAME)
                             .setUrl(STICKER_PACK_URL))
@@ -68,7 +67,7 @@ class StickerIndexingService() : IntentService("StickerIndexingService") {
         return stickerBuilders
     }
 
-    private fun getIndexableStickerPack(emotes: ArrayList<String>): Indexable {
+    private fun getIndexableStickerPack(emotes: ArrayList<HashMap<String, String>>): Indexable {
         val packImageUri = Uri.parse(STICKER_PACK_IMAGE).toString()
         val stickerBuilders = getStickerBuilders(emotes)
         return Indexables.stickerPackBuilder()
