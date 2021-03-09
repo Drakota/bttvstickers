@@ -10,16 +10,17 @@ class EmoteTile extends StatelessWidget {
   final Emote emote;
   final bool selected;
   final bool added;
+  final void Function() onTap;
 
   EmoteTile({
     @required this.emote,
     this.selected = false,
     this.added = false,
-  });
+    Function() onTap,
+  }) : onTap = onTap ?? (() => {});
 
   @override
   Widget build(BuildContext context) {
-    final pack = Provider.of<Pack>(context, listen: false);
     Color bgColor = this.added
         ? Theme.of(context).accentColor
         : this.selected
@@ -29,7 +30,7 @@ class EmoteTile extends StatelessWidget {
     return own.Card(
       color: bgColor,
       addPadding: false,
-      onTap: () => pack.toggleSelection(emote),
+      onTap: onTap,
       child: Center(
         child: Padding(
           padding: EdgeInsets.all(5.0),

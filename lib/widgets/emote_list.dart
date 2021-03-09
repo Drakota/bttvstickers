@@ -150,6 +150,7 @@ class _EmoteListState extends State<EmoteList> {
                       emote: _emotes[index],
                       selected: pack.isEmoteSelected(_emotes[index]),
                       added: pack.isEmoteAdded(_emotes[index]),
+                      onTap: () => pack.toggleSelection(_emotes[index]),
                     ),
                     childCount: _emotes.length,
                   ),
