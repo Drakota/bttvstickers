@@ -1,0 +1,77 @@
+name: Flutter CI
+
+on:
+  push:
+    tags:
+    - 'v*'
+  workflow_dispatch: 
+     
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      
+      - name: Download signing key
+        id: signing_key
+        uses: timheuer/base64-to-file@master
+        with:
+          fileName: key.jks
+          encodedString: ${{ secrets.SIGNING_KEY }}
+
+      - name: Download Google services file
+        id: google_services_file
+        uses: timheuer/base64-to-file@master
+        with:
+          fileName: google-services.json
+          encodedString: ${{ secrets.GOOGLE_SERVICES_FILE }}
+
+      - name: Move Google services file
+        run: mv $GOOGLE_SERVICES_FILE android/app/
+        env:
+          GOOGLE_SERVICES_FILE: ${{ steps.google_services_file.outputs.filePath }}
+
+      - name: Setup Flutter actions
+        uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
+      - name: Download pub dependencies
+        run: flutter pub get
+
+      - name: Run formatter
+        run: flutter format --set-exit-if-changed .
+
+      - name: Build release APKs
+        run: flutter build apk --split-per-abi
+        env:
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          ALIAS: ${{ secrets.ALIAS }}
+          KEY_PATH: ${{ steps.signing_key.outputs.filePath }}
+
+      - name: Upload APK artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-apks
+          path: 'build/app/outputs/apk/release/*.apk'
+      
+      - name: Build release appbundle
+        run: flutter build appbundle
+        env:
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          ALIAS: ${{ secrets.ALIAS }}
+          KEY_PATH: ${{ steps.signing_key.outputs.filePath }}
+
+      - name: Upload appbundle artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: release-appbundle
+          path: 'build/app/outputs/bundle/release/app-release.aab'
