@@ -11,11 +11,11 @@ class ClearableTextField extends StatefulWidget {
   final bool autofocus;
 
   ClearableTextField({
-    this.onChanged,
     this.debounceTime = const Duration(milliseconds: 0),
     this.autofocus = false,
     this.hintText = 'Enter text',
-  });
+    onChanged,
+  }) : onChanged = onChanged ?? (() => {});
 
   @override
   State<StatefulWidget> createState() {
@@ -26,7 +26,7 @@ class ClearableTextField extends StatefulWidget {
 class _ClearableTextFieldState extends State<ClearableTextField> {
   final TextEditingController _textEditingController = TextEditingController();
   bool _showClearButton = false;
-  Timer _debounce;
+  Timer? _debounce;
 
   @override
   void initState() {
@@ -46,19 +46,19 @@ class _ClearableTextFieldState extends State<ClearableTextField> {
       _showClearButton = _textEditingController.text.length > 0;
     });
     if (_textEditingController.text.length > 0) {
-      if (_debounce?.isActive ?? false) _debounce.cancel();
+      if (_debounce?.isActive ?? false) _debounce?.cancel();
       _debounce = Timer(widget.debounceTime, () {
         widget.onChanged(_textEditingController.text);
       });
     } else {
       // If we clear the textfield, bypass the debounce and send the
       // onChanged event right away
-      if (_debounce?.isActive ?? false) _debounce.cancel();
+      if (_debounce?.isActive ?? false) _debounce?.cancel();
       widget.onChanged(_textEditingController.text);
     }
   }
 
-  Widget _getClearButton() {
+  Widget? _getClearButton() {
     if (!_showClearButton) {
       return null;
     }

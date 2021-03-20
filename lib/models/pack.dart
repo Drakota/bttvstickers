@@ -4,6 +4,7 @@ import 'package:bttvstickers/models/json_serializable.dart';
 import 'package:bttvstickers/utils/file_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:bttvstickers/extensions/first_where_or_null.dart';
 
 class Pack extends ChangeNotifier implements JsonSerializable {
   List<Emote> _added = [];
@@ -51,14 +52,11 @@ class Pack extends ChangeNotifier implements JsonSerializable {
   }
 
   isEmoteAdded(Emote emote) {
-    var item = _added.firstWhere((e) => e.id == emote.id, orElse: () => null);
-    return item != null;
+    return _added.firstWhereOrNull((e) => e.id == emote.id) != null;
   }
 
   isEmoteSelected(Emote emote) {
-    var item =
-        _selected.firstWhere((e) => e.id == emote.id, orElse: () => null);
-    return item != null;
+    return _selected.firstWhereOrNull((e) => e.id == emote.id) != null;
   }
 
   fromJson(Future<Map<String, dynamic>> futureJson) async {

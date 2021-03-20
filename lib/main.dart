@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/models/pack.dart';
 import 'package:bttvstickers/models/settings.dart';
@@ -46,7 +47,11 @@ class App extends StatelessWidget {
       darkTheme: buildDarkTheme(),
       initialRoute: HomeScreen.routeName,
       onGenerateRoute: (settings) {
-        return createRoute(routes[settings.name]);
+        var route = routes[settings.name];
+        if (route == null) {
+          throw Exception("Route is not defined in routes file...");
+        }
+        return createRoute(route);
       },
       navigatorObservers: [
         FirebaseAnalyticsObserver(analytics: analytics),

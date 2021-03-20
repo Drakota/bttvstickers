@@ -3,37 +3,37 @@ import 'package:bttvstickers/widgets/card.dart' as own;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Option {
+class Option<T> {
   final String assetName;
-  final dynamic value;
+  final T value;
   final String displayName;
 
   Option({
-    this.assetName,
-    this.value,
-    this.displayName,
+    this.displayName = "",
+    required this.assetName,
+    required this.value,
   });
 }
 
-class OptionsCard extends StatefulWidget {
+class OptionsCard<T> extends StatefulWidget {
   final String fieldName;
-  final List<Option> options;
-  final dynamic defaultValue;
+  final List<Option<T>> options;
+  final T defaultValue;
   final void Function(Option selectedOption) onChange;
 
   OptionsCard({
-    this.fieldName,
-    this.options,
-    this.defaultValue,
-    this.onChange,
-  });
+    this.fieldName = "",
+    required this.options,
+    required this.defaultValue,
+    onChange,
+  }) : onChange = onChange ?? (() => {});
 
   @override
   _OptionsCardState createState() => _OptionsCardState();
 }
 
 class _OptionsCardState extends State<OptionsCard> {
-  int _currentIndex;
+  late int _currentIndex;
 
   @override
   void initState() {
@@ -62,9 +62,7 @@ class _OptionsCardState extends State<OptionsCard> {
         _currentIndex = 0;
       });
     }
-    if (widget.onChange != null) {
-      widget.onChange(widget.options[_currentIndex]);
-    }
+    widget.onChange(widget.options[_currentIndex]);
   }
 
   @override

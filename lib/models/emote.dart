@@ -7,7 +7,12 @@ class Emote implements JsonSerializable {
   final String imageType;
   final String imageUrl;
 
-  Emote({this.id, this.code, this.imageType, this.imageUrl});
+  Emote({
+    required this.id,
+    required this.code,
+    required this.imageType,
+    required this.imageUrl,
+  });
 
   factory Emote.fromJson(Map<String, dynamic> json) {
     return Emote(

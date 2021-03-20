@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 
 class Route {
   WidgetBuilder builder;
-  TransitionSettings transitionSettings;
+  TransitionSettings? transitionSettings;
 
-  Route({this.builder, this.transitionSettings});
+  Route({required this.builder, this.transitionSettings});
 }
 
 class TransitionSettings {
   Offset startPosition;
 
-  TransitionSettings({this.startPosition});
+  TransitionSettings({required this.startPosition});
 }
 
 final Map<String, Route> routes = {
@@ -22,7 +22,6 @@ final Map<String, Route> routes = {
   ),
   SearchScreen.routeName: Route(
     builder: (context) => SearchScreen(),
-    transitionSettings: TransitionSettings(startPosition: Offset(0.0, 0.0)),
   ),
   SettingsScreen.routeName: Route(
     builder: (context) => SettingsScreen(),

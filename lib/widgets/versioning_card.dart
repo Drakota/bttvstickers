@@ -9,7 +9,7 @@ class VersioningCard extends StatefulWidget {
 }
 
 class _VersioningCardState extends State<VersioningCard> {
-  Future<PackageInfo> _futurePackageInfo;
+  late Future<PackageInfo> _futurePackageInfo;
 
   @override
   void initState() {
@@ -23,7 +23,7 @@ class _VersioningCardState extends State<VersioningCard> {
       future: _futurePackageInfo,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          PackageInfo _packageInfo = snapshot.data;
+          PackageInfo _packageInfo = snapshot.data as PackageInfo;
           return own.Card(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,

@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class NetworkCard extends StatelessWidget {
   final void Function() onRefreshPressed;
 
-  NetworkCard({Function() onRefreshPressed})
+  NetworkCard({onRefreshPressed})
       : onRefreshPressed = onRefreshPressed ?? (() => {});
 
   @override
@@ -35,12 +35,14 @@ class NetworkCard extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           SizedBox(height: kErrorCardTextSpacing),
-          RaisedButton(
+          ElevatedButton(
             child: Text(
               "Refresh",
               style: Theme.of(context).textTheme.headline6,
             ),
-            color: Theme.of(context).accentColor,
+            style: ElevatedButton.styleFrom(
+              primary: Theme.of(context).accentColor,
+            ),
             onPressed: onRefreshPressed,
           ),
         ],

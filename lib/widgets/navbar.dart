@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget implements PreferredSizeWidget {
   final bool small;
-  final Widget title;
-  final Widget leading;
   final bool centerTitle;
-  final List<Widget> actions;
+  final Widget? title;
+  final Widget? leading;
+  final List<Widget>? actions;
 
   NavBar({
     this.small = false,

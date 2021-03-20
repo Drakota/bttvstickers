@@ -2,10 +2,10 @@ import 'package:bttvstickers/constants.dart';
 import 'package:flutter/material.dart';
 
 class Card extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   final void Function() onTap;
-  final Color color;
-  final Border border;
+  final Color? color;
+  final Border? border;
   final bool addPadding;
 
   Card({
@@ -13,7 +13,7 @@ class Card extends StatelessWidget {
     this.color,
     this.border,
     this.addPadding = true,
-    Function() onTap,
+    onTap,
   }) : onTap = onTap ?? (() => {});
 
   @override

@@ -41,9 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           }).toList(),
           onChanged: (value) {
-            setState(() {
-              category = value;
-            });
+            if (value != null) {
+              setState(() {
+                category = value;
+              });
+            }
           },
         ),
         centerTitle: true,

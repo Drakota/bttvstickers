@@ -6,7 +6,7 @@ Route createRoute(routes.Route route) {
     pageBuilder: (context, animation, secondaryAnimation) =>
         route.builder(context),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = route?.transitionSettings?.startPosition ?? Offset.zero;
+      var begin = route.transitionSettings?.startPosition ?? Offset.zero;
       var end = Offset.zero;
       var curve = Curves.ease;
 

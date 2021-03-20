@@ -1,9 +1,7 @@
 import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/models/emote.dart';
-import 'package:bttvstickers/models/pack.dart';
 import 'package:bttvstickers/widgets/card.dart' as own;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class EmoteTile extends StatelessWidget {
@@ -13,10 +11,10 @@ class EmoteTile extends StatelessWidget {
   final void Function() onTap;
 
   EmoteTile({
-    @required this.emote,
+    required this.emote,
     this.selected = false,
     this.added = false,
-    Function() onTap,
+    onTap,
   }) : onTap = onTap ?? (() => {});
 
   @override

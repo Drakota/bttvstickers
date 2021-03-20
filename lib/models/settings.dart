@@ -5,14 +5,14 @@ import 'package:bttvstickers/utils/file_helpers.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends ChangeNotifier implements JsonSerializable {
-  ThemeMode _theme;
+  ThemeMode _theme = ThemeMode.system;
   String _fileName = kSettingsFileName;
 
   Settings() {
     fromJson(getJsonFromFile(_fileName));
   }
 
-  get theme => _theme;
+  ThemeMode get theme => _theme;
   set theme(ThemeMode theme) {
     _theme = theme;
     saveModelToJsonFile(this, _fileName);

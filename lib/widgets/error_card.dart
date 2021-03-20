@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ErrorCard extends StatelessWidget {
   final String error;
 
-  ErrorCard({this.error});
+  ErrorCard({this.error = ""});
 
   @override
   Widget build(BuildContext context) {

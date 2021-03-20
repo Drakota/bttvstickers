@@ -14,18 +14,18 @@ import 'package:provider/provider.dart';
 
 class EmoteList extends StatefulWidget {
   final Category category;
-  final String query;
+  final String? query;
 
-  EmoteList({String category, this.query})
-      : category = enumFromString(Category.values, category);
+  EmoteList({required String category, this.query})
+      : category = enumFromString(Category.values, category) ?? Category.global;
 
   @override
   _EmoteListState createState() => _EmoteListState();
 }
 
 class _EmoteListState extends State<EmoteList> {
-  Future<List<Emote>> _futureEmotes;
-  List<Emote> _emotes = List();
+  Future<List<Emote>>? _futureEmotes;
+  List<Emote> _emotes = [];
   ScrollController _scrollController = ScrollController();
   int _offset = 0;
   bool _loading = false;
@@ -37,8 +37,9 @@ class _EmoteListState extends State<EmoteList> {
     var before = (widget.category == Category.shared && _emotes.isNotEmpty)
         ? _emotes.last.id
         : null;
-    var query =
-        widget.query != null && widget.query.length >= 3 ? widget.query : null;
+    var query = (widget.query != null && widget.query!.length >= 3)
+        ? widget.query
+        : null;
     var result = await fetchEmotes(
       category: widget.category,
       query: query,

@@ -6,10 +6,10 @@ import 'package:bttvstickers/models/emote.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<Emote>> fetchEmotes({
-  Category category,
-  String query,
-  String before,
-  int offset,
+  required Category category,
+  String? query,
+  String? before,
+  int? offset,
   int limit = kItemLimit,
 }) async {
   var args = <String, String>{};
@@ -45,7 +45,7 @@ Future<List<Emote>> fetchEmotes({
       break;
   }
 
-  final response = await http.get("$url?$queryString");
+  final response = await http.get(Uri.parse("$url?$queryString"));
   if (response.statusCode == 200) {
     var result = jsonDecode(response.body) as List;
     // Global emotes return the emote directly so if the value in the object's

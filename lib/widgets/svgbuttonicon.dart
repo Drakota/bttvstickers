@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SvgButtonIcon extends StatelessWidget {
   final String assetName;
-  final void Function() onPressed;
+  final void Function()? onPressed;
 
-  SvgButtonIcon({this.assetName, this.onPressed});
+  SvgButtonIcon({required this.assetName, this.onPressed});
 
   @override
   Widget build(BuildContext context) {
