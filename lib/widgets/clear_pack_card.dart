@@ -31,7 +31,7 @@ class ClearPackCard extends StatelessWidget {
         ),
         onTap: () {
           pack.clear();
-          Scaffold.of(context).showSnackBar(
+          ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
                 "Pack cleared successfully...",

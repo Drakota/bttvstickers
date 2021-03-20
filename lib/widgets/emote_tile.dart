@@ -40,6 +40,7 @@ class EmoteTile extends StatelessWidget {
                 image: emote.imageUrl,
                 placeholder: kTransparentImage,
                 height: kEmoteTileImageHeight,
+                width: kEmoteTileImageWidth,
               ),
               SizedBox(
                 height: kEmoteTileImageSubtitleSpacing,
