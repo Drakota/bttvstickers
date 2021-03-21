@@ -21,9 +21,6 @@ const kEmoteCdnUrl = "https://cdn.betterttv.net/emote";
 // InfiniteScrollView constants
 const kItemLimit = 50;
 
-// HomeScreen constants
-const kDefaultCategory = "Category.top";
-
 // Data persistance constants
 const kSettingsFileName = "settings";
 const kPackFileName = "pack";

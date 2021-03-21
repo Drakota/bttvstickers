@@ -43,6 +43,8 @@ Future<List<Emote>> fetchEmotes({
     case Category.global:
       url = kGlobalEmotesUrl;
       break;
+    default:
+      break;
   }
 
   final response = await http.get(Uri.parse("$url?$queryString"));

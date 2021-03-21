@@ -1,7 +1,7 @@
 import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/models/category.dart';
 import 'package:bttvstickers/widgets/clearable_textfield.dart';
-import 'package:bttvstickers/widgets/emote_list.dart';
+import 'package:bttvstickers/widgets/network_emote_list.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
 import 'package:bttvstickers/widgets/pack_button.dart';
 import 'package:bttvstickers/widgets/svgbuttonicon.dart';
@@ -52,8 +52,8 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: Padding(
         padding: EdgeInsets.all(kDefaultPadding),
-        child: EmoteList(
-          category: Category.shared.toString(),
+        child: NetworkEmoteList(
+          category: Category.shared,
           query: _query,
         ),
       ),

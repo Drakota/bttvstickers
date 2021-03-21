@@ -1,1 +1,1 @@
-enum Category { top, trending, shared, global }
+enum Category { top, trending, shared, global, added }

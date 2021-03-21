@@ -1,9 +1,10 @@
-import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/models/category.dart';
 import 'package:bttvstickers/screens/search_screen.dart';
 import 'package:bttvstickers/screens/settings_screen.dart';
-import 'package:bttvstickers/widgets/emote_list.dart';
+import 'package:bttvstickers/utils/enum_from_string.dart';
+import 'package:bttvstickers/widgets/added_emote_list.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
+import 'package:bttvstickers/widgets/network_emote_list.dart';
 import 'package:bttvstickers/widgets/pack_button.dart';
 import 'package:bttvstickers/widgets/svgbuttonicon.dart';
 import 'package:flutter/foundation.dart' as foundation;
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String category = kDefaultCategory;
+  Category category = Category.top;
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +27,15 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: NavBar(
         title: DropdownButton<String>(
-          value: category,
+          value: category.toString(),
           underline: Container(),
           icon: SvgButtonIcon(
             assetName: "assets/icons/chevron-down.svg",
           ),
           items: Category.values.map((Category category) {
-            return new DropdownMenuItem<String>(
+            return DropdownMenuItem<String>(
               value: category.toString(),
-              child: new Text(
+              child: Text(
                 foundation.describeEnum(category),
                 style: Theme.of(context).textTheme.headline5,
               ),
@@ -43,7 +44,8 @@ class _HomeScreenState extends State<HomeScreen> {
           onChanged: (value) {
             if (value != null) {
               setState(() {
-                category = value;
+                category =
+                    enumFromString(Category.values, value) ?? Category.top;
               });
             }
           },
@@ -64,9 +66,11 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      body: EmoteList(
-        category: category,
-      ),
+      body: category != Category.added
+          ? NetworkEmoteList(
+              category: category,
+            )
+          : AddedEmoteList(),
     );
   }
 }

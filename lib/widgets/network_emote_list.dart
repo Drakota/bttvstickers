@@ -5,25 +5,23 @@ import 'package:bttvstickers/models/category.dart';
 import 'package:bttvstickers/models/emote.dart';
 import 'package:bttvstickers/models/pack.dart';
 import 'package:bttvstickers/services/fetch_emotes.dart';
-import 'package:bttvstickers/utils/enum_from_string.dart';
 import 'package:bttvstickers/widgets/emote_tile.dart';
 import 'package:bttvstickers/widgets/error_card.dart';
 import 'package:bttvstickers/widgets/network_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class EmoteList extends StatefulWidget {
+class NetworkEmoteList extends StatefulWidget {
   final Category category;
   final String? query;
 
-  EmoteList({required String category, this.query})
-      : category = enumFromString(Category.values, category) ?? Category.global;
+  NetworkEmoteList({required this.category, this.query});
 
   @override
-  _EmoteListState createState() => _EmoteListState();
+  _NetworkEmoteListState createState() => _NetworkEmoteListState();
 }
 
-class _EmoteListState extends State<EmoteList> {
+class _NetworkEmoteListState extends State<NetworkEmoteList> {
   Future<List<Emote>>? _futureEmotes;
   List<Emote> _emotes = [];
   ScrollController _scrollController = ScrollController();
@@ -94,7 +92,7 @@ class _EmoteListState extends State<EmoteList> {
   }
 
   @override
-  void didUpdateWidget(EmoteList oldWidget) {
+  void didUpdateWidget(NetworkEmoteList oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.category != oldWidget.category) {
       _offset = 0;
@@ -131,7 +129,7 @@ class _EmoteListState extends State<EmoteList> {
             child: card,
           );
         }
-        return new OrientationBuilder(
+        return OrientationBuilder(
           builder: (context, orientation) => CustomScrollView(
             controller: _scrollController,
             physics: BouncingScrollPhysics(),
