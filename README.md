@@ -6,13 +6,13 @@
 </p>
 
 <h4 align="center">
-Search and discover BTTV emotes to add to your Gboard stickers and use them anywhere
+Search and discover BTTV emotes to add to your keyboard stickers and use them anywhere
 </h4>
 
 ## Features
 - Sort emotes by top, trending, shared or global
 - Search emotes by name
-- Collect multiple emotes into a Gboard sticker pack
+- Collect multiple emotes into a keyboard sticker pack
 - Use the sticker pack to add the image of an emote anywhere that supports images (WhatsApp, Messenger, Telegram...)
 
 ## Screenshots
