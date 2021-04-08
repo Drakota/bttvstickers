@@ -6,7 +6,7 @@ import 'package:bttvstickers/widgets/added_emote_list.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
 import 'package:bttvstickers/widgets/network_emote_list.dart';
 import 'package:bttvstickers/widgets/pack_button.dart';
-import 'package:bttvstickers/widgets/svgbuttonicon.dart';
+import 'package:bttvstickers/widgets/svg_button_icon.dart';
 import 'package:flutter/foundation.dart' as foundation;
 import 'package:flutter/material.dart';
 

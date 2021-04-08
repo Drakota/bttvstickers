@@ -6,10 +6,25 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="BTTV Stickers"
         android:icon="@mipmap/ic_launcher">
+
+        <service
+            android:name=".StickerInputMethod"
+            android:exported="false"
+            android:label="BTTV Stickers"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -38,21 +53,18 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="bttvstickers" android:host="emote" />
-            </intent-filter>
         </activity>
-        <service
-            android:name=".StickerIndexingService"
-            android:exported="true"
-            android:permission="com.google.android.gms.permission.APPINDEXING">
-            <intent-filter>
-                <action android:name="com.google.firebase.appindexing.UPDATE_INDEX" />
-            </intent-filter>
-        </service>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

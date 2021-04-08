@@ -1,6 +1,7 @@
 import 'package:bttvstickers/screens/home_screen.dart';
 import 'package:bttvstickers/screens/search_screen.dart';
 import 'package:bttvstickers/screens/settings_screen.dart';
+import 'package:bttvstickers/screens/tutorial_screen.dart';
 import 'package:flutter/material.dart';
 
 class Route {
@@ -26,5 +27,8 @@ final Map<String, Route> routes = {
   SettingsScreen.routeName: Route(
     builder: (context) => SettingsScreen(),
     transitionSettings: TransitionSettings(startPosition: Offset(0.0, 1.0)),
-  )
+  ),
+  TutorialScreen.routeName: Route(
+    builder: (context) => TutorialScreen(),
+  ),
 };

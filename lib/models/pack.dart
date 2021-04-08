@@ -1,16 +1,14 @@
 import 'package:bttvstickers/constants.dart';
+import 'package:bttvstickers/extensions/first_where_or_null.dart';
 import 'package:bttvstickers/models/emote.dart';
 import 'package:bttvstickers/models/json_serializable.dart';
 import 'package:bttvstickers/utils/file_helpers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:bttvstickers/extensions/first_where_or_null.dart';
 
 class Pack extends ChangeNotifier implements JsonSerializable {
   List<Emote> _added = [];
   List<Emote> _selected = [];
   String _fileName = kPackFileName;
-  MethodChannel _platform = const MethodChannel(kStickerIndexingChannel);
 
   Pack() {
     fromJson(getJsonFromFile(_fileName));
@@ -36,10 +34,6 @@ class Pack extends ChangeNotifier implements JsonSerializable {
     _added += _selected;
     _selected.clear();
     saveModelToJsonFile(this, _fileName);
-    _platform.invokeMethod(
-      'generatePack',
-      _added.map((e) => e.toJson()).toList(),
-    );
     notifyListeners();
   }
 
@@ -47,7 +41,6 @@ class Pack extends ChangeNotifier implements JsonSerializable {
     _selected.clear();
     _added.clear();
     saveModelToJsonFile(this, _fileName);
-    _platform.invokeMethod('generatePack', []);
     notifyListeners();
   }
 
