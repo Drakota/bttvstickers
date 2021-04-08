@@ -37,7 +37,7 @@ Search and discover BTTV emotes to add to your keyboard stickers and use them an
 </div>
 
 ## Planned features
-- Show the emotes currently added combined  
+- ~~Show the emotes currently added combined~~
 - Create multiple packs
 - Being able to combine emotes to generate a single image with both emotes (EZ Clap)
 
