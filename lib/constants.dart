@@ -6,8 +6,6 @@ const kDefaultPadding = 10.0;
 const kDefaultBorderRadius = 10.0;
 const kDefaultSnackBarLifetime = const Duration(milliseconds: 500);
 const kDefaultDebounceTime = const Duration(milliseconds: 250);
-const kStickerIndexingChannel =
-    "com.drakota.bttvstickers/sticker_indexing_service";
 
 // API constants
 const kEmotesApiBaseUrl = "https://api.betterttv.net/3";
@@ -62,3 +60,7 @@ const kEmoteTileFadeInTime = const Duration(milliseconds: 350);
 const kEmoteTileImageHeight = 50.0;
 const kEmoteTileImageWidth = 50.0;
 const kEmoteTileImageSubtitleSpacing = 5.0;
+
+// Strings
+const kTutorialWarning =
+    "Google deprecated the feature that provided the possibility to add stickers to Gboard. Starting from 2.0.0, BTTV Stickers includes it's own keyboard that provides the same functionality without relying on Google's keyboard";

@@ -1,4 +1,5 @@
 package com.drakota.bttvstickers
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 
-class PackAdapter(var context: Context, var emotes: JSONArray) : BaseAdapter() {
+class PackAdapter(var context: Context, var emotes: JSONArray, var commitContent: (emote: JSONObject) -> Unit) : BaseAdapter() {
     private val inflator: LayoutInflater = LayoutInflater.from(context)
 
     override fun getCount(): Int {
@@ -27,12 +28,14 @@ class PackAdapter(var context: Context, var emotes: JSONArray) : BaseAdapter() {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val emote = emotes.get(position) as JSONObject
-        val view: View
-        if (convertView == null) {
-            view = inflator.inflate(R.layout.emote, parent, false)
-        } else {
-            view = convertView
-        }
+        val view = convertView ?: inflator.inflate(R.layout.emote, parent, false)
+
+        view.setOnClickListener(View.OnClickListener { _ ->
+            commitContent(emote)
+            Utils.performHapticFeedback(context, 15)
+            return@OnClickListener
+        })
+
         val imageView = view.findViewById<ImageView>(R.id.EmoteImage)
         val url = emote.getString("imageUrl")
         Glide.with(context).load(url).into(imageView)

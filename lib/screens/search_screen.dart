@@ -4,7 +4,7 @@ import 'package:bttvstickers/widgets/clearable_textfield.dart';
 import 'package:bttvstickers/widgets/network_emote_list.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
 import 'package:bttvstickers/widgets/pack_button.dart';
-import 'package:bttvstickers/widgets/svgbuttonicon.dart';
+import 'package:bttvstickers/widgets/svg_button_icon.dart';
 import 'package:flutter/material.dart';
 
 class SearchScreen extends StatefulWidget {

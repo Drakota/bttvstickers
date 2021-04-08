@@ -1,5 +1,5 @@
 <p align="center" style="background: #0E0E10; border-radius: 10px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
-    <img src="./assets/images/banner.png" />
+    <img src="./images/banner.png" />
     <a href="https://play.google.com/store/apps/details?id=com.drakota.bttvstickers&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
         <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="150px" />
     </a>
@@ -21,16 +21,16 @@ Search and discover BTTV emotes to add to your keyboard stickers and use them an
     <table>
         <tr>
             <td style="text-align: center">
-                <img src="./assets/images/sc1.png" width="250" />
+                <img src="./images/screenshots/sc1.png" width="250" />
             </td>
             <td style="text-align: center">
-                <img src="./assets/images/sc2.png" width="250" />
+                <img src="./images/screenshots/sc2.png" width="250" />
             </td>
             <td style="text-align: center">
-                <img src="./assets/images/sc3.png" width="250" />
+                <img src="./images/screenshots/sc3.png" width="250" />
             </td>
             <td style="text-align: center">
-                <img src="./assets/images/sc4.png" width="250" />
+                <img src="./images/screenshots/sc4.png" width="250" />
             </td>
         </tr>
     </table>

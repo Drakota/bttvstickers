@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bttvstickers/constants.dart';
-import 'package:bttvstickers/widgets/svgbuttonicon.dart';
+import 'package:bttvstickers/widgets/svg_button_icon.dart';
 import 'package:flutter/material.dart';
 
 class ClearableTextField extends StatefulWidget {
