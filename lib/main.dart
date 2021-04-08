@@ -1,4 +1,3 @@
-// @dart=2.9
 import 'package:bttvstickers/constants.dart';
 import 'package:bttvstickers/models/pack.dart';
 import 'package:bttvstickers/models/settings.dart';
