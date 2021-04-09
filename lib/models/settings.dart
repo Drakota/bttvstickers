@@ -21,8 +21,10 @@ class Settings extends ChangeNotifier implements JsonSerializable {
 
   fromJson(Future<Map<String, dynamic>> futureJson) async {
     var json = await futureJson;
-    _theme =
-        enumFromString(ThemeMode.values, json['theme']) ?? ThemeMode.system;
+    String? theme = json['theme'];
+    if (theme != null) {
+      _theme = enumFromString(ThemeMode.values, theme) ?? ThemeMode.system;
+    }
     notifyListeners();
   }
 

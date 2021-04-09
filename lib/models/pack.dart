@@ -54,9 +54,10 @@ class Pack extends ChangeNotifier implements JsonSerializable {
 
   fromJson(Future<Map<String, dynamic>> futureJson) async {
     var json = await futureJson;
-    _added = ((json['emotes'] ?? []) as List)
-        .map((item) => Emote.fromJson(item))
-        .toList();
+    List<dynamic>? emotes = json['emotes'];
+    if (emotes != null) {
+      _added = emotes.map((item) => Emote.fromJson(item)).toList();
+    }
     notifyListeners();
   }
 

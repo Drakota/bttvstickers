@@ -6,7 +6,7 @@
 </p>
 
 <h4 align="center">
-Search and discover BTTV emotes to add to your keyboard stickers and use them anywhere
+Search, discover and use BTTV emotes in any messaging apps using stickers
 </h4>
 
 ## Features
