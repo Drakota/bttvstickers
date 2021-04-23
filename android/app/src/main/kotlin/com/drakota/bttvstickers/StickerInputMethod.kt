@@ -74,7 +74,7 @@ class StickerInputMethod : InputMethodService() {
 
         val emotes = if (packFile.exists()) {
             val pack = JSONObject(packFile.readText(Charsets.UTF_8))
-            pack.getJSONArray("emotes")
+            if (pack.has("emotes")) pack.getJSONArray("emotes") else JSONArray()
         } else JSONArray()
 
         emoteList.adapter = PackAdapter(applicationContext, emotes, this::commitContent)
