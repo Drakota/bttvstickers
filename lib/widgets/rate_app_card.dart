@@ -1,5 +1,4 @@
 import 'package:bttvstickers/constants.dart';
-import 'package:bttvstickers/screens/tutorial_screen.dart';
 import 'package:bttvstickers/widgets/card.dart' as own;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
