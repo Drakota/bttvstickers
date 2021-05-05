@@ -3,6 +3,7 @@ import 'package:bttvstickers/models/settings.dart';
 import 'package:bttvstickers/widgets/clear_pack_card.dart';
 import 'package:bttvstickers/widgets/navbar.dart';
 import 'package:bttvstickers/widgets/options_card.dart';
+import 'package:bttvstickers/widgets/rate_app_card.dart';
 import 'package:bttvstickers/widgets/svg_button_icon.dart';
 import 'package:bttvstickers/widgets/tutorial_card.dart';
 import 'package:bttvstickers/widgets/versioning_card.dart';
@@ -42,6 +43,10 @@ class SettingsScreen extends StatelessWidget {
                   settings.theme = selectedOption.value,
             ),
           ),
+          Container(
+            height: kErrorCardTextSpacing,
+          ),
+          ClearPackCard(),
           if (orientation == Orientation.portrait) Spacer(),
           Container(
             height: kErrorCardTextSpacing,
@@ -50,7 +55,7 @@ class SettingsScreen extends StatelessWidget {
           Container(
             height: kErrorCardTextSpacing,
           ),
-          ClearPackCard(),
+          RateAppCard(),
           Container(
             height: kErrorCardTextSpacing,
           ),

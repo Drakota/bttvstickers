@@ -29,6 +29,10 @@ class ClearPackCard extends StatelessWidget {
             Spacer(flex: 20),
           ],
         ),
+        border: Border.all(
+          width: kDefaultCardBorderSize,
+          color: Colors.yellow,
+        ),
         onTap: () {
           pack.clear();
           ScaffoldMessenger.of(context).showSnackBar(

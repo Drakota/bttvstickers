@@ -14,7 +14,7 @@ class NetworkCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return own.Card(
       border: Border.all(
-        width: kErrorCardBorderSize,
+        width: kDefaultCardBorderSize,
         color: Colors.yellow,
       ),
       child: Column(

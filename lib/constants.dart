@@ -6,6 +6,7 @@ const kDefaultPadding = 10.0;
 const kDefaultBorderRadius = 10.0;
 const kDefaultSnackBarLifetime = const Duration(milliseconds: 500);
 const kDefaultDebounceTime = const Duration(milliseconds: 250);
+const kDefaultCardBorderSize = 2.0;
 
 // API constants
 const kEmotesApiBaseUrl = "https://api.betterttv.net/3";
@@ -40,7 +41,6 @@ const kTextFieldFontSize = 18.0;
 const kPackButtonFadeOutTime = const Duration(milliseconds: 250);
 
 // ErrorCard constants
-const kErrorCardBorderSize = 2.0;
 const kErrorCardImageWidth = 200.0;
 const kErrorCardTextSpacing = 10.0;
 

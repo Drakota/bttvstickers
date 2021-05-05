@@ -12,7 +12,7 @@ class ErrorCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return own.Card(
       border: Border.all(
-        width: kErrorCardBorderSize,
+        width: kDefaultCardBorderSize,
         color: Colors.red,
       ),
       child: Column(
