@@ -1,6 +1,7 @@
 package com.drakota.bttvstickers
 
 import android.content.ClipDescription
+import android.content.Intent
 import android.content.res.Configuration
 import android.inputmethodservice.InputMethodService
 import android.net.Uri
@@ -19,6 +20,7 @@ import java.io.File
 
 class StickerInputMethod : InputMethodService() {
     private val PACK_PATH_PATTERN = "%s/app_flutter/pack.json"
+    private val CACHE_FILE_PATTERN = "cached_sticker.%s"
 
     private fun commitImage(emote: JSONObject, contentUri: Uri) {
         val mimeType = "image/" + emote.getString("imageType")
@@ -32,6 +34,12 @@ class StickerInputMethod : InputMethodService() {
         var flags = 0
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
             flags = flags or InputConnectionCompat.INPUT_CONTENT_GRANT_READ_URI_PERMISSION
+        } else {
+            grantUriPermission(
+                editorInfo.packageName,
+                contentUri,
+                Intent.FLAG_GRANT_READ_URI_PERMISSION
+            )
         }
         InputConnectionCompat.commitContent(inputConnection, editorInfo, inputContentInfo, flags, null)
     }
@@ -45,7 +53,10 @@ class StickerInputMethod : InputMethodService() {
 
         Thread {
             val temp = future.get()
-            val cacheFile = File(applicationContext.externalCacheDir, "cached_sticker")
+            val cacheFile = File(
+                applicationContext.externalCacheDir,
+                String.format(CACHE_FILE_PATTERN, emote.getString("imageType"))
+            )
             temp.copyTo(cacheFile, true)
 
             val contentUri = if (Build.VERSION.SDK_INT >= 24)
