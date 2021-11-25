@@ -1,6 +1,7 @@
 package com.drakota.bttvstickers
 
 import android.content.ClipDescription
+import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.inputmethodservice.InputMethodService
@@ -8,7 +9,9 @@ import android.net.Uri
 import android.os.Build
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.GridView
+import android.widget.ImageButton
 import androidx.core.content.FileProvider
 import androidx.core.view.inputmethod.InputConnectionCompat
 import androidx.core.view.inputmethod.InputContentInfoCompat
@@ -77,9 +80,17 @@ class StickerInputMethod : InputMethodService() {
     }
 
     override fun onCreateInputView(): View? {
+        val imeManager: InputMethodManager = applicationContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         val root: View = layoutInflater.inflate(R.layout.keyboard, null)
+
         val emoteList: GridView = root.findViewById(R.id.EmoteList)
         emoteList.numColumns = if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) 4 else 8
+
+        val keyboardSwitchBtn: ImageButton = root.findViewById(R.id.KeyboardSwitchBtn)
+        keyboardSwitchBtn.setOnClickListener {
+            imeManager.showInputMethodPicker()
+        }
+
         val dataDir = applicationContext.packageManager.getPackageInfo(applicationContext.packageName, 0).applicationInfo.dataDir;
         val packFile = File(String.format(PACK_PATH_PATTERN, dataDir))
 
