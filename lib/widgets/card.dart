@@ -9,12 +9,14 @@ class Card extends StatelessWidget {
   final bool addPadding;
 
   Card({
+    Key? key,
     this.child,
     this.color,
     this.border,
     this.addPadding = true,
     onTap,
-  }) : onTap = onTap ?? (() => {});
+  })  : onTap = onTap ?? (() => {}),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +24,20 @@ class Card extends StatelessWidget {
       type: MaterialType.transparency,
       child: Ink(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(kDefaultBorderRadius)),
-          border: this.border,
+          borderRadius:
+              const BorderRadius.all(Radius.circular(kDefaultBorderRadius)),
+          border: border,
           color: color ?? Theme.of(context).secondaryHeaderColor,
         ),
         child: InkWell(
-          borderRadius: BorderRadius.all(Radius.circular(kDefaultBorderRadius)),
-          child: Container(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(kDefaultBorderRadius),
+          ),
+          child: SizedBox(
             width: double.infinity,
-            child: this.addPadding
+            child: addPadding
                 ? Padding(
-                    padding: EdgeInsets.all(kDefaultPadding + 10.0),
+                    padding: const EdgeInsets.all(kDefaultPadding + 10.0),
                     child: child,
                   )
                 : child,

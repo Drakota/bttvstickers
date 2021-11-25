@@ -23,6 +23,7 @@ class Emote implements JsonSerializable {
     );
   }
 
+  @override
   toJson() {
     return {
       'id': id,

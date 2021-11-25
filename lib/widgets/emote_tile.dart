@@ -11,17 +11,20 @@ class EmoteTile extends StatelessWidget {
   final void Function() onTap;
 
   EmoteTile({
+    Key? key,
     required this.emote,
     this.selected = false,
     this.added = false,
     onTap,
-  }) : onTap = onTap ?? (() => {});
+  })  : onTap = onTap ?? (() => {}),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Color bgColor = this.added
+    Color bgColor = added
+        // ignore: deprecated_member_use
         ? Theme.of(context).accentColor
-        : this.selected
+        : selected
             ? Theme.of(context).hintColor
             : Theme.of(context).cardColor;
 
@@ -31,7 +34,7 @@ class EmoteTile extends StatelessWidget {
       onTap: onTap,
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(5.0),
+          padding: const EdgeInsets.all(5.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -42,7 +45,7 @@ class EmoteTile extends StatelessWidget {
                 height: kEmoteTileImageHeight,
                 width: kEmoteTileImageWidth,
               ),
-              SizedBox(
+              const SizedBox(
                 height: kEmoteTileImageSubtitleSpacing,
               ),
               FittedBox(

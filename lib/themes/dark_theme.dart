@@ -5,19 +5,19 @@ ThemeData buildDarkTheme() {
     textTheme: ThemeData.dark()
         .textTheme
         .copyWith(
-          subtitle1: TextStyle(
+          subtitle1: const TextStyle(
             fontSize: 12.0,
             fontWeight: FontWeight.w600,
           ),
-          subtitle2: TextStyle(
+          subtitle2: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w300,
           ),
-          headline5: TextStyle(
+          headline5: const TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.w900,
           ),
-          headline6: TextStyle(
+          headline6: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w600,
           ),
@@ -25,11 +25,13 @@ ThemeData buildDarkTheme() {
         .apply(
           fontFamily: 'Inter',
         ),
-    accentColor: Color(0xff64ffda),
-    hintColor: Color(0xffadaaa5),
-    scaffoldBackgroundColor: Color(0xff0e0e10),
-    cardColor: Color(0xff464649),
-    buttonColor: Color(0xffe5e5e5),
-    secondaryHeaderColor: Color(0xff1f1f23),
+    // ignore: deprecated_member_use
+    accentColor: const Color(0xff64ffda),
+    hintColor: const Color(0xffadaaa5),
+    scaffoldBackgroundColor: const Color(0xff0e0e10),
+    cardColor: const Color(0xff464649),
+    // ignore: deprecated_member_use
+    buttonColor: const Color(0xffe5e5e5),
+    secondaryHeaderColor: const Color(0xff1f1f23),
   );
 }

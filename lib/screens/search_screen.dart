@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 class SearchScreen extends StatefulWidget {
   static String routeName = "/search";
 
+  const SearchScreen({Key? key}) : super(key: key);
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -33,7 +35,7 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: PackButton(),
+      floatingActionButton: const PackButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: NavBar(
         small: true,
@@ -51,7 +53,7 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(kDefaultPadding),
+        padding: const EdgeInsets.all(kDefaultPadding),
         child: NetworkEmoteList(
           category: Category.shared,
           query: _query,

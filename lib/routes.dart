@@ -19,16 +19,17 @@ class TransitionSettings {
 
 final Map<String, Route> routes = {
   HomeScreen.routeName: Route(
-    builder: (context) => HomeScreen(),
+    builder: (context) => const HomeScreen(),
   ),
   SearchScreen.routeName: Route(
-    builder: (context) => SearchScreen(),
+    builder: (context) => const SearchScreen(),
   ),
   SettingsScreen.routeName: Route(
-    builder: (context) => SettingsScreen(),
-    transitionSettings: TransitionSettings(startPosition: Offset(0.0, 1.0)),
+    builder: (context) => const SettingsScreen(),
+    transitionSettings:
+        TransitionSettings(startPosition: const Offset(0.0, 1.0)),
   ),
   TutorialScreen.routeName: Route(
-    builder: (context) => TutorialScreen(),
+    builder: (context) => const TutorialScreen(),
   ),
 };

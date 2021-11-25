@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class Pack extends ChangeNotifier implements JsonSerializable {
   List<Emote> _added = [];
   List<Emote> _selected = [];
-  String _fileName = kPackFileName;
+  final String _fileName = kPackFileName;
 
   Pack() {
     fromJson(getJsonFromFile(_fileName));
@@ -61,6 +61,7 @@ class Pack extends ChangeNotifier implements JsonSerializable {
     notifyListeners();
   }
 
+  @override
   toJson() {
     return {
       'emotes': _added.map((e) => e.toJson()).toList(),

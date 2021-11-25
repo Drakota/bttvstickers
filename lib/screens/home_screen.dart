@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatefulWidget {
   static String routeName = "/";
 
+  const HomeScreen({foundation.Key? key}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -23,13 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: PackButton(),
+      floatingActionButton: const PackButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: NavBar(
         title: DropdownButton<String>(
           value: category.toString(),
           underline: Container(),
-          icon: SvgButtonIcon(
+          icon: const SvgButtonIcon(
             assetName: "assets/icons/chevron-down.svg",
           ),
           items: Category.values.map((Category category) {
@@ -70,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ? NetworkEmoteList(
               category: category,
             )
-          : AddedEmoteList(),
+          : const AddedEmoteList(),
     );
   }
 }

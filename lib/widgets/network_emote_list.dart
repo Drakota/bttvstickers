@@ -15,7 +15,8 @@ class NetworkEmoteList extends StatefulWidget {
   final Category category;
   final String? query;
 
-  NetworkEmoteList({required this.category, this.query});
+  const NetworkEmoteList({Key? key, required this.category, this.query})
+      : super(key: key);
 
   @override
   _NetworkEmoteListState createState() => _NetworkEmoteListState();
@@ -24,7 +25,7 @@ class NetworkEmoteList extends StatefulWidget {
 class _NetworkEmoteListState extends State<NetworkEmoteList> {
   Future<List<Emote>>? _futureEmotes;
   List<Emote> _emotes = [];
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   int _offset = 0;
   bool _loading = false;
 
@@ -47,7 +48,7 @@ class _NetworkEmoteListState extends State<NetworkEmoteList> {
       before: before,
     );
 
-    if (widget.category == Category.global && _emotes.length > 0) {
+    if (widget.category == Category.global && _emotes.isNotEmpty) {
       // The API for global always return the same data even if we have
       // an offset (no empty array), so if the category is global and we
       // already fetched something just return an empty array
@@ -125,17 +126,17 @@ class _NetworkEmoteListState extends State<NetworkEmoteList> {
             );
           }
           return Padding(
-            padding: EdgeInsets.all(kDefaultPadding),
+            padding: const EdgeInsets.all(kDefaultPadding),
             child: card,
           );
         }
         return OrientationBuilder(
           builder: (context, orientation) => CustomScrollView(
             controller: _scrollController,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             slivers: [
               SliverPadding(
-                padding: EdgeInsets.all(kDefaultPadding),
+                padding: const EdgeInsets.all(kDefaultPadding),
                 sliver: SliverGrid(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: orientation == Orientation.portrait
@@ -156,7 +157,7 @@ class _NetworkEmoteListState extends State<NetworkEmoteList> {
                 ),
               ),
               if (_loading)
-                SliverPadding(
+                const SliverPadding(
                   padding: EdgeInsets.all(kDefaultPadding),
                   sliver: SliverToBoxAdapter(
                     child: Center(

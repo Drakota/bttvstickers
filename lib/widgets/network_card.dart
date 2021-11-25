@@ -7,8 +7,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 class NetworkCard extends StatelessWidget {
   final void Function() onRefreshPressed;
 
-  NetworkCard({onRefreshPressed})
-      : onRefreshPressed = onRefreshPressed ?? (() => {});
+  NetworkCard({Key? key, onRefreshPressed})
+      : onRefreshPressed = onRefreshPressed ?? (() => {}),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,7 @@ class NetworkCard extends StatelessWidget {
         children: [
           SvgPicture.asset(
             "assets/icons/broadcast.svg",
+            // ignore: deprecated_member_use
             color: Theme.of(context).buttonColor,
             width: kNetworkCardImageWidth,
           ),
@@ -28,19 +30,20 @@ class NetworkCard extends StatelessWidget {
             "No Internet connection",
             style: Theme.of(context).textTheme.headline6,
           ),
-          SizedBox(height: kErrorCardTextSpacing),
+          const SizedBox(height: kErrorCardTextSpacing),
           Text(
             "Check your connection, then refresh the list.",
             style: Theme.of(context).textTheme.subtitle2,
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: kErrorCardTextSpacing),
+          const SizedBox(height: kErrorCardTextSpacing),
           ElevatedButton(
             child: Text(
               "Refresh",
               style: Theme.of(context).textTheme.headline6,
             ),
             style: ElevatedButton.styleFrom(
+              // ignore: deprecated_member_use
               primary: Theme.of(context).accentColor,
             ),
             onPressed: onRefreshPressed,

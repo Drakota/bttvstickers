@@ -6,19 +6,21 @@ class SvgButtonIcon extends StatelessWidget {
   final String assetName;
   final void Function()? onPressed;
 
-  SvgButtonIcon({required this.assetName, this.onPressed});
+  const SvgButtonIcon({Key? key, required this.assetName, this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       padding: EdgeInsets.zero,
       icon: SvgPicture.asset(
-        this.assetName,
+        assetName,
         height: kNavBarIconHeight,
+        // ignore: deprecated_member_use
         color: Theme.of(context).buttonColor,
       ),
       splashRadius: kNavBarIconSplashRadius,
-      onPressed: this.onPressed,
+      onPressed: onPressed,
     );
   }
 }

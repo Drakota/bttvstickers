@@ -5,22 +5,22 @@ ThemeData buildLightTheme() {
     textTheme: ThemeData.light()
         .textTheme
         .copyWith(
-          subtitle1: TextStyle(
+          subtitle1: const TextStyle(
             fontSize: 12.0,
             fontWeight: FontWeight.w600,
             color: Colors.black,
           ),
-          subtitle2: TextStyle(
+          subtitle2: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w300,
             color: Colors.black,
           ),
-          headline5: TextStyle(
+          headline5: const TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.w900,
             color: Colors.black,
           ),
-          headline6: TextStyle(
+          headline6: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w600,
             color: Colors.black,
@@ -29,11 +29,13 @@ ThemeData buildLightTheme() {
         .apply(
           fontFamily: 'Inter',
         ),
-    accentColor: Color(0xff4fdde8),
-    hintColor: Color(0xffcbcbd0),
+    // ignore: deprecated_member_use
+    accentColor: const Color(0xff4fdde8),
+    hintColor: const Color(0xffcbcbd0),
     scaffoldBackgroundColor: Colors.white,
-    cardColor: Color(0xffe5e5e5),
-    buttonColor: Color(0xff464649),
-    secondaryHeaderColor: Color(0xffefeff1),
+    cardColor: const Color(0xffe5e5e5),
+    // ignore: deprecated_member_use
+    buttonColor: const Color(0xff464649),
+    secondaryHeaderColor: const Color(0xffefeff1),
   );
 }

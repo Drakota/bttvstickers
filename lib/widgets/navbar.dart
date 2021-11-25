@@ -8,13 +8,14 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? leading;
   final List<Widget>? actions;
 
-  NavBar({
+  const NavBar({
+    Key? key,
     this.small = false,
     this.centerTitle = false,
     this.title,
     this.leading,
     this.actions,
-  });
+  }) : super(key: key);
 
   @override
   Size get preferredSize =>
@@ -26,11 +27,12 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor:
           !small ? Theme.of(context).secondaryHeaderColor : Colors.transparent,
       elevation: !small ? kNavBarElevation : 0.0,
+      // ignore: deprecated_member_use
       brightness: Theme.of(context).brightness,
-      centerTitle: this.centerTitle,
-      title: this.title,
-      leading: this.leading,
-      actions: this.actions,
+      centerTitle: centerTitle,
+      title: title,
+      leading: leading,
+      actions: actions,
     );
   }
 }

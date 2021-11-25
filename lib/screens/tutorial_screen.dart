@@ -7,11 +7,13 @@ import 'package:bttvstickers/widgets/card.dart' as own;
 class TutorialScreen extends StatelessWidget {
   static String routeName = "/tutorial";
 
+  const TutorialScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kSmallNavBarHeight),
+        preferredSize: const Size.fromHeight(kSmallNavBarHeight),
         child: NavBar(
           small: true,
           centerTitle: true,
@@ -28,9 +30,9 @@ class TutorialScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.all(kDefaultPadding),
+          padding: const EdgeInsets.all(kDefaultPadding),
           child: Column(
             children: <Widget>[
               own.Card(

@@ -6,6 +6,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class ClearPackCard extends StatelessWidget {
+  const ClearPackCard({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final pack = Provider.of<Pack>(context);
@@ -17,16 +19,17 @@ class ClearPackCard extends StatelessWidget {
             SvgPicture.asset(
               "assets/icons/trash.svg",
               height: kNavBarIconHeight,
+              // ignore: deprecated_member_use
               color: Theme.of(context).buttonColor,
             ),
-            Spacer(
+            const Spacer(
               flex: kIconFieldFlexSpacing,
             ),
             Text(
               "Clear pack",
               style: Theme.of(context).textTheme.headline6,
             ),
-            Spacer(flex: 20),
+            const Spacer(flex: 20),
           ],
         ),
         border: Border.all(
@@ -41,6 +44,7 @@ class ClearPackCard extends StatelessWidget {
                 "Pack cleared successfully...",
                 style: Theme.of(context).textTheme.subtitle2,
               ),
+              // ignore: deprecated_member_use
               backgroundColor: Theme.of(context).accentColor,
               duration: kDefaultSnackBarLifetime,
             ),

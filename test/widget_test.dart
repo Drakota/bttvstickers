@@ -14,7 +14,7 @@ void main() {
           ChangeNotifierProvider(create: (context) => Pack()),
         ],
         child: Builder(
-          builder: (_) => App(),
+          builder: (_) => const App(),
         ),
       ),
     );

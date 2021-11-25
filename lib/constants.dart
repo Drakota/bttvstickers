@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 const kAppTitle = "BTTV Stickers";
 const kDefaultPadding = 10.0;
 const kDefaultBorderRadius = 10.0;
-const kDefaultSnackBarLifetime = const Duration(milliseconds: 500);
-const kDefaultDebounceTime = const Duration(milliseconds: 250);
+const kDefaultSnackBarLifetime = Duration(milliseconds: 500);
+const kDefaultDebounceTime = Duration(milliseconds: 250);
 const kDefaultCardBorderSize = 2.0;
 
 // API constants
@@ -38,7 +38,7 @@ const kNavBarIconSplashRadius = kNavBarIconHeight;
 const kTextFieldFontSize = 18.0;
 
 // PackButton constants
-const kPackButtonFadeOutTime = const Duration(milliseconds: 250);
+const kPackButtonFadeOutTime = Duration(milliseconds: 250);
 
 // ErrorCard constants
 const kErrorCardImageWidth = 200.0;
@@ -56,7 +56,7 @@ const kEmoteListVerticalItemCount = 4;
 const kEmoteListHorizontalItemCount = 8;
 
 // EmoteTile constants
-const kEmoteTileFadeInTime = const Duration(milliseconds: 350);
+const kEmoteTileFadeInTime = Duration(milliseconds: 350);
 const kEmoteTileImageHeight = 50.0;
 const kEmoteTileImageWidth = 50.0;
 const kEmoteTileImageSubtitleSpacing = 5.0;

@@ -22,11 +22,13 @@ class OptionsCard<T> extends StatefulWidget {
   final void Function(Option selectedOption) onChange;
 
   OptionsCard({
+    Key? key,
     this.fieldName = "",
     required this.options,
     required this.defaultValue,
     onChange,
-  }) : onChange = onChange ?? (() => {});
+  })  : onChange = onChange ?? (() => {}),
+        super(key: key);
 
   @override
   _OptionsCardState createState() => _OptionsCardState();
@@ -73,16 +75,17 @@ class _OptionsCardState extends State<OptionsCard> {
           SvgPicture.asset(
             widget.options[_currentIndex].assetName,
             height: kNavBarIconHeight,
+            // ignore: deprecated_member_use
             color: Theme.of(context).buttonColor,
           ),
-          Spacer(
+          const Spacer(
             flex: kIconFieldFlexSpacing,
           ),
           Text(
             "${widget.fieldName}: ${widget.options[_currentIndex].displayName}",
             style: Theme.of(context).textTheme.headline6,
           ),
-          Spacer(flex: 20),
+          const Spacer(flex: 20),
         ],
       ),
       onTap: _handleOnTap,

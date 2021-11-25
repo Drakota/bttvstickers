@@ -11,11 +11,13 @@ class ClearableTextField extends StatefulWidget {
   final bool autofocus;
 
   ClearableTextField({
+    Key? key,
     this.debounceTime = const Duration(milliseconds: 0),
     this.autofocus = false,
     this.hintText = 'Enter text',
     onChanged,
-  }) : onChanged = onChanged ?? (() => {});
+  })  : onChanged = onChanged ?? (() => {}),
+        super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -43,9 +45,9 @@ class _ClearableTextFieldState extends State<ClearableTextField> {
 
   void _onTextChangedListener() {
     setState(() {
-      _showClearButton = _textEditingController.text.length > 0;
+      _showClearButton = _textEditingController.text.isNotEmpty;
     });
-    if (_textEditingController.text.length > 0) {
+    if (_textEditingController.text.isNotEmpty) {
       if (_debounce?.isActive ?? false) _debounce?.cancel();
       _debounce = Timer(widget.debounceTime, () {
         widget.onChanged(_textEditingController.text);
@@ -75,6 +77,7 @@ class _ClearableTextFieldState extends State<ClearableTextField> {
       controller: _textEditingController,
       autofocus: widget.autofocus,
       style: TextStyle(
+        // ignore: deprecated_member_use
         color: Theme.of(context).accentColor,
         fontSize: kTextFieldFontSize,
       ),

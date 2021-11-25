@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TutorialCard extends StatelessWidget {
+  const TutorialCard({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return own.Card(
@@ -13,16 +15,17 @@ class TutorialCard extends StatelessWidget {
           SvgPicture.asset(
             "assets/icons/question.svg",
             height: kNavBarIconHeight,
+            // ignore: deprecated_member_use
             color: Theme.of(context).buttonColor,
           ),
-          Spacer(
+          const Spacer(
             flex: kIconFieldFlexSpacing,
           ),
           Text(
             "Tutorial",
             style: Theme.of(context).textTheme.headline6,
           ),
-          Spacer(flex: 20),
+          const Spacer(flex: 20),
         ],
       ),
       onTap: () {

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AddedEmoteList extends StatefulWidget {
-  AddedEmoteList();
+  const AddedEmoteList({Key? key}) : super(key: key);
 
   @override
   _AddedEmoteListState createState() => _AddedEmoteListState();
@@ -27,10 +27,10 @@ class _AddedEmoteListState extends State<AddedEmoteList> {
 
     return OrientationBuilder(
       builder: (context, orientation) => CustomScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverPadding(
-            padding: EdgeInsets.all(kDefaultPadding),
+            padding: const EdgeInsets.all(kDefaultPadding),
             sliver: SliverGrid(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: orientation == Orientation.portrait

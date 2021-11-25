@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
 
 class VersioningCard extends StatefulWidget {
+  const VersioningCard({Key? key}) : super(key: key);
+
   @override
   _VersioningCardState createState() => _VersioningCardState();
 }
@@ -32,7 +34,7 @@ class _VersioningCardState extends State<VersioningCard> {
                   "$kAppTitle v${_packageInfo.version}",
                   style: Theme.of(context).textTheme.headline6,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: kEmoteListSpacing,
                 ),
                 Text(

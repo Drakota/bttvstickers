@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ErrorCard extends StatelessWidget {
   final String error;
 
-  ErrorCard({this.error = ""});
+  const ErrorCard({Key? key, this.error = ""}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,7 @@ class ErrorCard extends StatelessWidget {
         children: [
           SvgPicture.asset(
             "assets/icons/sadge.svg",
+            // ignore: deprecated_member_use
             color: Theme.of(context).buttonColor,
             width: kErrorCardImageWidth,
           ),
@@ -26,15 +27,16 @@ class ErrorCard extends StatelessWidget {
             "An error has occured!",
             style: Theme.of(context).textTheme.headline6,
           ),
-          SizedBox(height: kErrorCardTextSpacing),
+          const SizedBox(height: kErrorCardTextSpacing),
           Text(
             "Send this to the developer",
             style: Theme.of(context).textTheme.subtitle2,
           ),
-          SizedBox(height: kErrorCardTextSpacing),
+          const SizedBox(height: kErrorCardTextSpacing),
           Text(
-            "$error",
+            error,
             style: TextStyle(
+              // ignore: deprecated_member_use
               color: Theme.of(context).accentColor,
               fontFamily: 'CascadiaMono',
             ),

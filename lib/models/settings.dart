@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class Settings extends ChangeNotifier implements JsonSerializable {
   ThemeMode _theme = ThemeMode.system;
-  String _fileName = kSettingsFileName;
+  final String _fileName = kSettingsFileName;
 
   Settings() {
     fromJson(getJsonFromFile(_fileName));
@@ -28,6 +28,7 @@ class Settings extends ChangeNotifier implements JsonSerializable {
     notifyListeners();
   }
 
+  @override
   toJson() {
     return {
       'theme': _theme.toString(),

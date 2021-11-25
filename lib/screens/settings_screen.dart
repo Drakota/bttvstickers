@@ -13,9 +13,11 @@ import 'package:provider/provider.dart';
 class SettingsScreen extends StatelessWidget {
   static String routeName = "/settings";
 
+  const SettingsScreen({Key? key}) : super(key: key);
+
   Widget generateSettingOptions(Orientation orientation) {
     var options = Padding(
-      padding: EdgeInsets.all(kDefaultPadding),
+      padding: const EdgeInsets.all(kDefaultPadding),
       child: Column(
         children: <Widget>[
           Consumer<Settings>(
@@ -46,20 +48,20 @@ class SettingsScreen extends StatelessWidget {
           Container(
             height: kErrorCardTextSpacing,
           ),
-          ClearPackCard(),
-          if (orientation == Orientation.portrait) Spacer(),
+          const ClearPackCard(),
+          if (orientation == Orientation.portrait) const Spacer(),
           Container(
             height: kErrorCardTextSpacing,
           ),
-          TutorialCard(),
+          const TutorialCard(),
           Container(
             height: kErrorCardTextSpacing,
           ),
-          RateAppCard(),
+          const RateAppCard(),
           Container(
             height: kErrorCardTextSpacing,
           ),
-          VersioningCard(),
+          const VersioningCard(),
         ],
       ),
     );
@@ -67,7 +69,7 @@ class SettingsScreen extends StatelessWidget {
     return orientation == Orientation.portrait
         ? options
         : SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: options,
           );
   }
@@ -76,7 +78,7 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kSmallNavBarHeight),
+        preferredSize: const Size.fromHeight(kSmallNavBarHeight),
         child: NavBar(
           small: true,
           centerTitle: true,
