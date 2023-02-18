@@ -50,12 +50,21 @@ Future<List<Emote>> fetchEmotes({
   final response = await http.get(Uri.parse("$url?$queryString"));
   if (response.statusCode == 200) {
     var result = jsonDecode(response.body) as List;
-    // Global emotes return the emote directly so if the value in the object's
-    // key emote is null we just take the whole object
-    return result.map((item) => Emote.fromJson(item['emote'] ?? item)).toList();
+    return result.map((item) {
+      // Global emotes return the emote directly so if the value in the object's
+      // key emote is null we just take the whole object
+      if (item['emote'] == null) {
+        return Emote.fromJson(item);
+      }
+
+      var emote = item['emote'];
+      // Offset doesn't work anymore for global emotes so we use the id
+      emote['paginationId'] = item['id'];
+      return Emote.fromJson(emote);
+    }).toList();
   } else {
     throw Exception(
-      'Failed to while fetching emotes...\nError: ${response.body}',
+      'Failure while fetching emotes...\nError: ${response.body}',
     );
   }
 }

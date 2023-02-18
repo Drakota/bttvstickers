@@ -3,6 +3,7 @@ import 'package:bttvstickers/models/json_serializable.dart';
 
 class Emote implements JsonSerializable {
   final String id;
+  final String? paginationId;
   final String code;
   final String imageType;
   final String imageUrl;
@@ -10,6 +11,7 @@ class Emote implements JsonSerializable {
   Emote({
     required this.id,
     required this.code,
+    this.paginationId,
     required this.imageType,
     required this.imageUrl,
   });
@@ -17,6 +19,7 @@ class Emote implements JsonSerializable {
   factory Emote.fromJson(Map<String, dynamic> json) {
     return Emote(
       id: json['id'],
+      paginationId: json['paginationId'],
       code: json['code'],
       imageType: json['imageType'],
       imageUrl: "$kEmoteCdnUrl/${json['id']}/3x.${json['imageType']}",

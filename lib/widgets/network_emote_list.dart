@@ -33,8 +33,10 @@ class _NetworkEmoteListState extends State<NetworkEmoteList> {
     setState(() {
       _loading = true;
     });
-    var before = (widget.category == Category.shared && _emotes.isNotEmpty)
-        ? _emotes.last.id
+    var before = _emotes.isNotEmpty
+        ? (widget.category == Category.shared)
+            ? _emotes.last.id
+            : _emotes.last.paginationId
         : null;
     var query = (widget.query != null && widget.query!.length >= 3)
         ? widget.query
@@ -42,7 +44,9 @@ class _NetworkEmoteListState extends State<NetworkEmoteList> {
     var result = await fetchEmotes(
       category: widget.category,
       query: query,
-      offset: _offset,
+      // Pagination with offset seems to only work for
+      // shared emotes with a query
+      offset: query != null ? _offset : null,
       // The API for shared needs to know the last id of our
       // list of emotes to paginate
       before: before,
