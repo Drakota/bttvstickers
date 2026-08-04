@@ -5,6 +5,14 @@ import 'package:bttvstickers/models/category.dart';
 import 'package:bttvstickers/models/emote.dart';
 import 'package:http/http.dart' as http;
 
+const _bttvRequestHeaders = <String, String>{
+  "accept": "application/json",
+  "origin": "https://betterttv.com",
+  "referer": "https://betterttv.com/",
+  "user-agent":
+      "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+};
+
 Future<List<Emote>> fetchEmotes({
   required Category category,
   String? query,
@@ -47,7 +55,10 @@ Future<List<Emote>> fetchEmotes({
       break;
   }
 
-  final response = await http.get(Uri.parse("$url?$queryString"));
+  final response = await http.get(
+    Uri.parse("$url?$queryString"),
+    headers: _bttvRequestHeaders,
+  );
   if (response.statusCode == 200) {
     var result = jsonDecode(response.body) as List;
     return result.map((item) {
